@@ -1,0 +1,571 @@
+{
+  "users": [
+      {
+        "id": "f8a1",
+        "name": "rizan",
+        "phn": "9946186283",
+        "userName": "riz123",
+        "password": "789456"
+      },
+      {
+        "id": "cbc7",
+        "name": "rizan",
+        "phn": "4578127845",
+        "userName": "riz1234",
+        "password": "789456123"
+      },
+      {
+        "id": "9faa",
+        "name": "modhalaj",
+        "phn": "9037086721",
+        "userName": "midhu123",
+        "password": "789456"
+      },
+      {
+        "id": "8eef",
+        "name": "rizan",
+        "phn": "7894561238",
+        "userName": "rizan123",
+        "password": "789456"
+      }
+  ],
+  "wishlist": [],
+  "cart": [
+    {
+      "id": "1ab9",
+      "userId": "e4f3",
+      "productId": "2",
+      "quantity": 1
+    },
+    {
+      "id": "547b",
+      "userId": "cbc7",
+      "productId": "17",
+      "quantity": 1
+    },
+    {
+      "id": "15bc",
+      "userId": "8eef",
+      "productId": "17",
+      "quantity": 1
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Classic Analog Watch",
+      "description": "The Movado Bold Fusion Chronograph is a 44mm timepiece that combines sophistication with functionality. Its rose gold-toned stainless steel case complements a black chronograph dial featuring rose gold accents and the Movado signature dot at 12 o'clock. Sunray dial chronograph subdials for elapsed time tracking, and a date window add to its functionality, making it a great choice for active individuals",
+      "price": 6640,
+      "category": "Classic",
+      "image": "https://static.helioswatchstore.com/media/catalog/product/3/6/3600898_1.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Digital Sports Watch",
+      "description": "Water-resistant digital watch with multiple sports modes.",
+      "price": 4980,
+      "category": "Sports",
+      "image": "https://5.imimg.com/data5/JJ/IL/GH/SELLER-17755668/skmei-1155-casual-men-male-sport-watches-chronograph-double-time-alarm-watch-waterproof-digital-wris.jpeg"
+    },
+    {
+      "id": "3",
+      "name": "Luxury Chronograph",
+      "description": "Premium chronograph watch with sapphire crystal.",
+      "price": 24900,
+      "category": "Luxury",
+      "image": "https://luxurytime.in/wp-content/uploads/2024/07/A13313121L1A1.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Smart Watch Pro",
+      "description": "Advanced smartwatch with heart rate monitoring and GPS.",
+      "price": 16600,
+      "category": "Smart",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT8PckXs4YACKouFk7YZxtQ4lHXt7lzUcUTg&s"
+    },
+    {
+      "id": "5",
+      "name": "Minimalist Watch",
+      "description": "Sleek and simple design for everyday wear.",
+      "price": 4150,
+      "category": "Casual",
+      "image": "https://watchessy.com/wp-content/uploads/2020/06/custom-watches.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Diver's Watch",
+      "description": "Professional diving watch with 200m water resistance.",
+      "price": 20750,
+      "category": "Sports",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLsRhIBAN_m6bz1BqzJpaeF41b1lxUMNed5g&s"
+    },
+    {
+      "id": "7",
+      "name": "Vintage Pocket Watch",
+      "description": "Classic pocket watch with antique finish.",
+      "price": 7470,
+      "category": "Vintage",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy1RBnleHp8Cuh_mHHutSghObvbRlUgBxipA&s"
+    },
+    {
+      "id": "8",
+      "name": "Fitness Tracker Watch",
+      "description": "Track your steps, calories, and sleep patterns.",
+      "price": 3320,
+      "category": "Fitness",
+      "image": "https://image.made-in-china.com/2f0j00ymPcoUOqGSkb/2024-Men-Sports-Smart-Watch-F300-IP67-Waterproof-Bt-Call-2-1inch-Big-Screen-Heart-Rate-Women-s-Health-Fitness-Tracker-Smartwatch.webp"
+    },
+    {
+      "id": "9",
+      "name": "Pilot's Watch",
+      "description": "Aviation-inspired watch with chronograph function.",
+      "price": 14950,
+      "category": "Professional",
+      "image": "https://images.squarespace-cdn.com/content/v1/5c78138211f784469d4817df/04afbf30-8752-4b82-951c-bc5687a8b25e/387D0760-EE1C-4DF9-9761-555063A70F93.jpeg"
+    },
+    {
+      "id": "10",
+      "name": "Kids' Digital Watch",
+      "description": "Colorful and durable watch for children.",
+      "price": 2080,
+      "category": "Kids",
+      "image": "https://skmei.in/cdn/shop/files/1451color1_0a50da8a-8b3c-4557-a574-383874644877.jpg?v=1746858831"
+    },
+    {
+      "id": "11",
+      "name": "Military Tactical Watch",
+      "description": "Rugged watch designed for outdoor adventures.",
+      "price": 10800,
+      "category": "Outdoor",
+      "image": "https://i.pinimg.com/564x/f9/b7/65/f9b76564fe6afb7617d04b4c2ab55f49.jpg"
+    },
+    {
+      "id": "12",
+      "name": "Rose Gold Dress Watch",
+      "description": "Elegant rose gold watch for formal occasions.",
+      "price": 13300,
+      "category": "Formal",
+      "image": "https://guesswatches.com/cdn/shop/products/GW0114L3.png?v=1684277916&width=990"
+    },
+    {
+      "id": "13",
+      "name": "Solar-Powered Watch",
+      "description": "Eco-friendly watch that charges with sunlight.",
+      "price": 7470,
+      "category": "Eco",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHKxQBE3IKxCcHdt1NnAa-eRi7pDaCbXj30w&s"
+    },
+    {
+      "id": "14",
+      "name": "Limited Edition Collector's Watch",
+      "description": "Exclusive limited edition timepiece.",
+      "price": 41500,
+      "category": "Luxury",
+      "image": "https://www.bangalorewatchco.in/cdn/shop/files/apogee_karman_meta_v2_1000x.jpg?v=1728396212"
+    },
+    {
+      "id": "15",
+      "name": "Wooden Watch",
+      "description": "Sustainable watch made from natural wood.",
+      "price": 5810,
+      "category": "Eco",
+      "image": "https://images.stockcake.com/public/f/8/5/f857c7bf-8b18-457b-9870-8cfbab80f624_large/elegant-wooden-watch-stockcake.jpg"
+    },
+    {
+      "id": "16",
+      "name": "Business Chronograph",
+      "description": "Professional watch for the modern executive.",
+      "price": 16600,
+      "category": "Featured",
+      "image": "https://img.joomcdn.net/4f6e1551e5624816193e8a2992b081541704ebb1_original.jpeg"
+    },
+    {
+      "id": "17",
+      "name": "Unisex Fashion Watch",
+      "description": "Trendy watch suitable for all genders.",
+      "price": 4560,
+      "category": "Featured",
+      "image": "https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/29520988/2024/5/15/77892c23-cac7-4bed-a1b5-3304752dc7581715756231173MINICooperUnisexDialStrapsAnalogueWatchWTMIN161705QN1.jpg"
+    },
+    {
+      "id": "18",
+      "name": "Moon Phase Watch",
+      "description": "Sophisticated watch displaying moon phases.",
+      "price": 23250,
+      "category": "Featured",
+      "image": "https://5.imimg.com/data5/HD/RN/MY-35870101/grey-dial-dual-time-with-moon-phase-watch-1710nl01.png"
+    },
+    {
+      "id": "19",
+      "name": "Skeleton Watch",
+      "description": "Mechanical watch with visible movement.",
+      "price": 29050,
+      "category": "Featured",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGsFcR-NJVcY5crIaGgUf8OwkuLAIIUlrEg&s"
+    },
+    {
+      "id": "20",
+      "name": "Budget Digital Watch",
+      "description": "Affordable and reliable digital timepiece.",
+      "price": 1660,
+      "category": "Featured",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+    },
+    {
+      "id": "21",
+      "name": "Budget Digital Watch",
+      "description": "Affordable and reliable digital timepiece.",
+      "price": 1660,
+      "category": "Featured",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+    },
+    {
+      "id": "22",
+      "name": "Kids' Digital Watch",
+      "description": "Colorful and durable watch for children.",
+      "price": 2080,
+      "category": "Featured",
+      "image": "https://skmei.in/cdn/shop/files/1451color1_0a50da8a-8b3c-4557-a574-383874644877.jpg?v=1746858831"
+    },
+    {
+      "id": "23",
+      "name": "Military Tactical Watch",
+      "description": "Rugged watch designed for outdoor adventures.",
+      "price": 10800,
+      "category": "Featured",
+      "image": "https://i.pinimg.com/564x/f9/b7/65/f9b76564fe6afb7617d04b4c2ab55f49.jpg"
+    },
+    {
+      "id": "24",
+      "name": "Rose Gold Dress Watch",
+      "description": "Elegant rose gold watch for formal occasions.",
+      "price": 13300,
+      "category": "Formal",
+      "image": "https://guesswatches.com/cdn/shop/products/GW0114L3.png?v=1684277916&width=990"
+    },
+    {
+      "id": "25",
+      "name": "Solar-Powered Watch",
+      "description": "Eco-friendly watch that charges with sunlight.",
+      "price": 7470,
+      "category": "Eco",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHKxQBE3IKxCcHdt1NnAa-eRi7pDaCbXj30w&s"
+    },
+    {
+      "id": "26",
+      "name": "Limited Edition Collector's Watch",
+      "description": "Exclusive limited edition timepiece.",
+      "price": 41500,
+      "category": "Luxury",
+      "image": "https://www.bangalorewatchco.in/cdn/shop/files/apogee_karman_meta_v2_1000x.jpg?v=1728396212"
+    },
+    {
+      "id": "27",
+      "name": "Wooden Watch",
+      "description": "Sustainable watch made from natural wood.",
+      "price": 5810,
+      "category": "Eco",
+      "image": "https://images.stockcake.com/public/f/8/5/f857c7bf-8b18-457b-9870-8cfbab80f624_large/elegant-wooden-watch-stockcake.jpg"
+    },
+    {
+      "id": "28",
+      "name": "Business Chronograph",
+      "description": "Professional watch for the modern executive.",
+      "price": 16600,
+      "category": "Professional",
+      "image": "https://img.joomcdn.net/4f6e1551e5624816193e8a2992b081541704ebb1_original.jpeg"
+    },
+    {
+      "id": "29",
+      "name": "Unisex Fashion Watch",
+      "description": "Trendy watch suitable for all genders.",
+      "price": 4560,
+      "category": "Fashion",
+      "image": "https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/29520988/2024/5/15/77892c23-cac7-4bed-a1b5-3304752dc7581715756231173MINICooperUnisexDialStrapsAnalogueWatchWTMIN161705QN1.jpg"
+    },
+    {
+      "id": "30",
+      "name": "Moon Phase Watch",
+      "description": "Sophisticated watch displaying moon phases.",
+      "price": 23250,
+      "category": "Luxury",
+      "image": "https://5.imimg.com/data5/HD/RN/MY-35870101/grey-dial-dual-time-with-moon-phase-watch-1710nl01.png"
+    },
+    {
+      "id": "31",
+      "name": "Skeleton Watch",
+      "description": "Mechanical watch with visible movement.",
+      "price": 29050,
+      "category": "Mechanical",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGsFcR-NJVcY5crIaGgUf8OwkuLAIIUlrEg&s"
+    },
+    {
+      "id": "32",
+      "name": "Budget Digital Watch",
+      "description": "Affordable and reliable digital timepiece.",
+      "price": 1660,
+      "category": "Basic",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+    },
+    {
+      "id": "33",
+      "name": "Budget Digital Watch",
+      "description": "Affordable and reliable digital timepiece.",
+      "price": 1660,
+      "category": "Basic",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+    },
+    {
+      "id": "34",
+      "name": "Kids' Digital Watch",
+      "description": "Colorful and durable watch for children.",
+      "price": 2080,
+      "category": "Kids",
+      "image": "https://skmei.in/cdn/shop/files/1451color1_0a50da8a-8b3c-4557-a574-383874644877.jpg?v=1746858831"
+    },
+    {
+      "id": "35",
+      "name": "Military Tactical Watch",
+      "description": "Rugged watch designed for outdoor adventures.",
+      "price": 10800,
+      "category": "Outdoor",
+      "image": "https://i.pinimg.com/564x/f9/b7/65/f9b76564fe6afb7617d04b4c2ab55f49.jpg"
+    },
+    {
+      "id": "36",
+      "name": "Rose Gold Dress Watch",
+      "description": "Elegant rose gold watch for formal occasions.",
+      "price": 13300,
+      "category": "Formal",
+      "image": "https://guesswatches.com/cdn/shop/products/GW0114L3.png?v=1684277916&width=990"
+    },
+    {
+      "id": "37",
+      "name": "Solar-Powered Watch",
+      "description": "Eco-friendly watch that charges with sunlight.",
+      "price": 7470,
+      "category": "Eco",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHKxQBE3IKxCcHdt1NnAa-eRi7pDaCbXj30w&s"
+    },
+    {
+      "id": "38",
+      "name": "Limited Edition Collector's Watch",
+      "description": "Exclusive limited edition timepiece.",
+      "price": 41500,
+      "category": "Luxury",
+      "image": "https://www.bangalorewatchco.in/cdn/shop/files/apogee_karman_meta_v2_1000x.jpg?v=1728396212"
+    },
+    {
+      "id": "39",
+      "name": "Wooden Watch",
+      "description": "Sustainable watch made from natural wood.",
+      "price": 5810,
+      "category": "Eco",
+      "image": "https://images.stockcake.com/public/f/8/5/f857c7bf-8b18-457b-9870-8cfbab80f624_large/elegant-wooden-watch-stockcake.jpg"
+    },
+    {
+      "id": "40",
+      "name": "Business Chronograph",
+      "description": "Professional watch for the modern executive.",
+      "price": 16600,
+      "category": "Professional",
+      "image": "https://img.joomcdn.net/4f6e1551e5624816193e8a2992b081541704ebb1_original.jpeg"
+    },
+    {
+      "id": "41",
+      "name": "Unisex Fashion Watch",
+      "description": "Trendy watch suitable for all genders.",
+      "price": 4560,
+      "category": "Fashion",
+      "image": "https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/29520988/2024/5/15/77892c23-cac7-4bed-a1b5-3304752dc7581715756231173MINICooperUnisexDialStrapsAnalogueWatchWTMIN161705QN1.jpg"
+    },
+    {
+      "id": "42",
+      "name": "Moon Phase Watch",
+      "description": "Sophisticated watch displaying moon phases.",
+      "price": 23250,
+      "category": "Luxury",
+      "image": "https://5.imimg.com/data5/HD/RN/MY-35870101/grey-dial-dual-time-with-moon-phase-watch-1710nl01.png"
+    },
+    {
+      "id": "43",
+      "name": "Skeleton Watch",
+      "description": "Mechanical watch with visible movement.",
+      "price": 29050,
+      "category": "Mechanical",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGsFcR-NJVcY5crIaGgUf8OwkuLAIIUlrEg&s"
+    },
+    {
+      "id": "44",
+      "name": "Budget Digital Watch",
+      "description": "Affordable and reliable digital timepiece.",
+      "price": 1660,
+      "category": "Basic",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+    },
+    {
+      "id": "45",
+      "name": "Budget Digital Watch",
+      "description": "Affordable and reliable digital timepiece.",
+      "price": 1660,
+      "category": "Basic",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+    }
+  ],
+  "orders": [
+    {
+      "id": "2f22",
+      "userId": "f8a1",
+      "productId": "16",
+      "quantity": 1,
+      "date": "2025-05-17T04:30:49.028Z",
+      "deliveryDetails": {
+        "name": "rizan",
+        "phone": "789788987",
+        "addressLine": "ksjh,sflhflkj",
+        "city": "aofd",
+        "zip": "654585"
+      }
+    },
+    {
+      "id": "3fbf",
+      "userId": "f8a1",
+      "productId": "21",
+      "quantity": 1,
+      "date": "2025-05-17T04:30:49.063Z",
+      "deliveryDetails": {
+        "name": "rizan",
+        "phone": "789788987",
+        "addressLine": "ksjh,sflhflkj",
+        "city": "aofd",
+        "zip": "654585"
+      }
+    },
+    {
+      "id": "41f0",
+      "userId": "f8a1",
+      "productId": "22",
+      "quantity": 1,
+      "date": "2025-05-17T04:35:47.438Z",
+      "deliveryDetails": {
+        "name": "sdgf",
+        "phone": "dsfs",
+        "addressLine": "sdfsdf",
+        "city": "sdfdsf",
+        "zip": "sdfds"
+      }
+    },
+    {
+      "id": "be73",
+      "userId": "f8a1",
+      "productId": "23",
+      "quantity": 2,
+      "date": "2025-05-17T04:36:12.581Z",
+      "deliveryDetails": {
+        "name": "dsf",
+        "phone": "sf",
+        "addressLine": "sfd",
+        "city": "fs",
+        "zip": "sdf"
+      }
+    },
+    {
+      "id": "7e60",
+      "userId": "cbc7",
+      "productId": "21",
+      "quantity": 1,
+      "date": "2025-05-17T04:37:48.641Z",
+      "deliveryDetails": {
+        "name": "fsd",
+        "phone": "fsd",
+        "addressLine": "sf",
+        "city": "sf",
+        "zip": "sfd"
+      }
+    },
+    {
+      "id": "6bda",
+      "userId": "cbc7",
+      "productId": "17",
+      "quantity": 1,
+      "date": "2025-05-17T04:56:56.611Z",
+      "deliveryDetails": {
+        "name": "w",
+        "phone": "w",
+        "addressLine": "QURTUBA INSTITUTE OF ACADEMIC EXELENCE\nKASHIBARI, BADIJAN, KOCHADHAMAN",
+        "city": "w",
+        "zip": "w"
+      }
+    },
+    {
+      "id": "b244",
+      "userId": "cbc7",
+      "productId": "9",
+      "quantity": 1,
+      "date": "2025-05-17T05:14:26.469Z",
+      "deliveryDetails": {
+        "name": "dsf",
+        "phone": "fds",
+        "addressLine": "dsg",
+        "city": "s",
+        "zip": "sf"
+      }
+    },
+    {
+      "id": "011e",
+      "userId": "f8a1",
+      "productId": "23",
+      "quantity": 5,
+      "date": "2025-05-17T06:07:55.575Z",
+      "deliveryDetails": {
+        "name": "s",
+        "phone": "w",
+        "addressLine": "58",
+        "city": "586",
+        "zip": "68"
+      }
+    },
+    {
+      "id": "6184",
+      "userId": "9faa",
+      "productId": "16",
+      "quantity": "1",
+      "date": "2025-05-17T07:46:46.975Z",
+      "deliveryDetails": {
+        "name": "s6gyt5r7hyg",
+        "phone": "54554",
+        "addressLine": "alikkal ",
+        "city": "palakkad",
+        "zip": "65785"
+      }
+    },
+    {
+      "id": "6db9",
+      "userId": "9faa",
+      "productId": "21",
+      "quantity": 1,
+      "date": "2025-05-17T07:46:47.008Z",
+      "deliveryDetails": {
+        "name": "s6gyt5r7hyg",
+        "phone": "54554",
+        "addressLine": "alikkal ",
+        "city": "palakkad",
+        "zip": "65785"
+      }
+    },
+    {
+      "id": "d06b",
+      "userId": "8eef",
+      "productId": "16",
+      "quantity": 1,
+      "date": "2025-05-17T10:47:19.469Z",
+      "deliveryDetails": {
+        "name": "akj",
+        "phone": "87",
+        "addressLine": "skdjsj",
+        "city": "jsf",
+        "zip": "878"
+      }
+    }
+  ]
+}
