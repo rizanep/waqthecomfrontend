@@ -6,7 +6,7 @@ const useNotificationSocket = (username, onMessage) => {
   useEffect(() => {
     if (!username) return;
 
-    const socket = new WebSocket(`ws://localhost:8000/ws/notifications/${username}/`);
+    const socket = new WebSocket(`wss://waqthecom.duckdns.org/${username}/`);
 
     socket.onopen = () => {
       console.log("✅ WebSocket connected");
