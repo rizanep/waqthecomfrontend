@@ -21,7 +21,7 @@ const ProductListPage = () => {
   const { setLoading } = useLoading();
 
 const handleShare = (product) => {
-  const productURL = `https://yourdomain.com/product/${product.id}`;
+  const productURL = `https://spectacular-stroopwafel-c4c611.netlify.app/product/${product.id}`;
   const message = `Check out this product: ${product.name} - ₹${product.price}. View it here: ${productURL}`;
   const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
   window.open(whatsappURL, "_blank");
