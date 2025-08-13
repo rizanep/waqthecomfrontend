@@ -27,7 +27,7 @@ const ViewOrders = () => {
   }, []);
 const handleStatusChange = async (orderId, newStatus) => {
   try {
-    await axios.patch(`http://localhost:8000/api/order/${orderId}/`, {
+    await api.patch(`order/${orderId}/`, {
       status: newStatus,
     });
     setOrders((prevOrders) =>
