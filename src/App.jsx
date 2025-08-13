@@ -43,6 +43,7 @@ import { useLoading } from "./context/LoadingContext";
 import Loader from "./pages/Loader";
 import { FaBell } from "react-icons/fa";
 import { nav } from "framer-motion/client";
+import api from "./api";
 
 
 function Header() {
@@ -73,7 +74,7 @@ useEffect(() => {
       fetchNotifications()
   }, [location,setProducts,cartCount]);
 const fetchproducts=async()=>{
-  await axios.get(`http://127.0.0.1:8000/api/products/`)
+  await api.get(`products/`)
       .then((res)=>{
         setProducts(res.data) 
 })
@@ -84,7 +85,7 @@ const fetchNotifications = async () => {
     }
 
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/notifications/", {
+      const res = await api.get("notifications/", {
         params: { user_id: session.id }, 
         headers: {
           Authorization: `Bearer ${token}`,
@@ -109,14 +110,14 @@ const handleNotificationMessage = useCallback((message) => {
 const handleRemove = async (item) => {
   let deleteid;
     setWishlist((prev) => prev.filter((a) => a.productId !== item.productId));
-    await axios.get(`http://127.0.0.1:8000/api/wishlist/?userId=${user.id}&productId=${item.productId}`,{headers: {
+    await api.get(`wishlist/?userId=${user.id}&productId=${item.productId}`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       })
       .then((res)=>{
         deleteid=res.data[0].id
       })
-    await axios.delete(`http://127.0.0.1:8000/api/wishlist/${deleteid}/`,{headers: {
+    await api.delete(`wishlist/${deleteid}/`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       });

@@ -11,6 +11,7 @@ import {
   Alert,
 } from "react-bootstrap";
 import { useLoading } from "../context/LoadingContext";
+import api from "../api";
 
 
 export default function ProductDetails() {
@@ -25,8 +26,8 @@ export default function ProductDetails() {
   window.scrollTo(0, 0);
   setLoading(true);
 
-  axios
-    .get(`http://127.0.0.1:8000/api/products/${id}/`)
+  api
+    .get(`products/${id}/`)
     .then((res) => {
       setProduct(res.data);
     })
@@ -44,9 +45,9 @@ export default function ProductDetails() {
       return;
     }
 
-    axios
+    api
       .get(
-        `http://127.0.0.1:8000/api/cart/?userId=${session.id}&productId=${product.id}`,{headers: {
+        `cart/?userId=${session.id}&productId=${product.id}`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       }
@@ -54,14 +55,14 @@ export default function ProductDetails() {
       .then((res) => {
         if (res.data.length > 1000) {
           const item = res.data[0];
-          axios.patch(`http://127.0.0.1:8000/api/cart/${item.id}/`, {
+          api.patch(`cart/${item.id}/`, {
             quantity: item.quantity + 1,
           },{headers: {
     Authorization: `Bearer ${token}`,
   },
       });
         } else {
-          axios.post("http://127.0.0.1:8000/api/cart/", {
+          api.post("cart/", {
             userId: session.id,
             productId: product.id,
             quantity,

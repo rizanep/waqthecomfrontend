@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; 
+import api from "../api";
 
 export const ContextCreate = createContext();
 
@@ -50,15 +51,15 @@ export const ContextProvider = ({ children }) => {
     
       
     if (user && user.id) { // Ensure user and user.id exist before making API calls
-      axios.get(`http://127.0.0.1:8000/api/cart/?userId=${user.id}`,{headers: {
+      api.get(`cart/?userId=${user.id}`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       }).then((res) => {
         setCartCount(res.data.length);
       }).catch(error => console.error("Error fetching cart:", error));
       
-      axios
-        .get(`http://127.0.0.1:8000/api/wishlist/?userId=${user.id}`,{headers: {
+      api
+        .get(`wishlist/?userId=${user.id}`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       })

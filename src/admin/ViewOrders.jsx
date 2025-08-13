@@ -3,6 +3,7 @@ import axios from "axios";
 import { Form, Container, Card, Row, Col, Alert } from "react-bootstrap";
 import { ContextCreate } from "../context/ContextCreate";
 import { useNavigate } from "react-router-dom";
+import api from "../api";
 
 const ViewOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -40,14 +41,14 @@ const handleStatusChange = async (orderId, newStatus) => {
 };
   const fetchOrdersWithDetails = async () => {
     try {
-      const ordersResponse = await axios.get("http://127.0.0.1:8000/api/order/",{headers: {
+      const ordersResponse = await api.get("order/",{headers: {
     Authorization: `Bearer ${token}`,
   },
       });
       setOrders(ordersResponse.data);
 
-      const productsResponse = await axios.get(
-        "http://127.0.0.1:8000/api/products/"
+      const productsResponse = await api.get(
+        "products/"
       );
       setProducts(productsResponse.data);
 
@@ -58,8 +59,8 @@ const handleStatusChange = async (orderId, newStatus) => {
       const usersData = {};
       for (const userId of userIds) {
         try {
-          const userResponse = await axios.get(
-            `http://127.0.0.1:8000/api/register/${userId}`
+          const userResponse = await api.get(
+            `register/${userId}`
           ,{headers: {
     Authorization: `Bearer ${token}`,
   },

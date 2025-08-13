@@ -15,6 +15,7 @@ import {
 } from "recharts";
 import { ContextCreate } from "../context/ContextCreate";
 import { useNavigate } from "react-router-dom";
+import api from "../api";
 
 const AdminPanel = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const AdminPanel = () => {
 
   const fetchSalesData = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/order/", {
+      const res = await api.get("order/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -83,12 +84,12 @@ const AdminPanel = () => {
   const fetchOrders = async () => {
     try {
       const [ordersRes, productsRes] = await Promise.all([
-        axios.get("http://127.0.0.1:8000/api/order/", {
+        api.get("order/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }),
-        axios.get("http://127.0.0.1:8000/api/products/"),
+        api.get("products/"),
       ]);
 
       const ordersData = ordersRes.data;
@@ -111,7 +112,7 @@ const AdminPanel = () => {
   };
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/register/", {
+      const res = await api.get("register/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -125,7 +126,7 @@ const AdminPanel = () => {
 
   const fetchCartItems = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/cart/", {
+      const res = await api.get("cart/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -138,7 +139,7 @@ const AdminPanel = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/products/");
+      const res = await api.get("products/");
       const activeProducts = res.data.filter((p) => !p.deleted);
       setProducts(activeProducts);
 

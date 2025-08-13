@@ -12,6 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ContextCreate } from "../context/ContextCreate";
+import api from "../api";
 
 export default function Checkout() {
   const [cart, setCart] = useState([]);
@@ -38,11 +39,11 @@ export default function Checkout() {
 
       try {
         const [cartRes, productRes] = await Promise.all([
-          axios.get(`http://127.0.0.1:8000/api/cart?userId=${session.id}`,{headers: {
+          api.get(`cart?userId=${session.id}`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       }),
-          axios.get("http://127.0.0.1:8000/api/products"),
+          api.get("products"),
         ]);
 
         const cartData = cartRes.data;
@@ -87,7 +88,7 @@ export default function Checkout() {
     try {
       for (const item of cart) {
   try {
-    await axios.post("http://127.0.0.1:8000/api/order/", {
+    await api.post("order/", {
       user: session.id,
       product: item.productId,
       quantity: item.quantity,
@@ -101,7 +102,7 @@ export default function Checkout() {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    await axios.delete(`http://127.0.0.1:8000/api/cart/${item.id}/`, {
+    await api.delete(`cart/${item.id}/`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -159,8 +160,8 @@ const initiatePayment = async () => {
   }
 
   try {
-    const orderRes = await axios.post(
-      "http://127.0.0.1:8000/api/create-order/",
+    const orderRes = await api.post(
+      "create-order/",
       { amount: totalamount },
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -178,8 +179,8 @@ const initiatePayment = async () => {
       order_id: order_id,
       handler: async function (response) {
   try {
-    const verifyRes = await axios.post(
-      "http://127.0.0.1:8000/api/verify-payment/",
+    const verifyRes = await api.post(
+      "verify-payment/",
       {
         razorpay_order_id: response.razorpay_order_id,
         razorpay_payment_id: response.razorpay_payment_id,

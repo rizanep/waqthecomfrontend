@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Card, Row, Col, Alert } from "react-bootstrap";
 import { useLoading } from "../context/LoadingContext";
+import api from "../api";
 export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
@@ -15,10 +16,10 @@ useEffect(() => {
 
   setLoading(true);
 
-  const productsRequest = axios.get("http://127.0.0.1:8000/api/products/");
+  const productsRequest = api.get("products/");
 
-  const ordersRequest = axios.get(
-    `http://127.0.0.1:8000/api/order/?user=${session.id}`,
+  const ordersRequest = api.get(
+    `order/?user=${session.id}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

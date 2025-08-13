@@ -10,7 +10,7 @@ import {
   Carousel,
 } from "react-bootstrap";
 import { FaWhatsapp } from "react-icons/fa";
-
+import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { ContextCreate } from "../context/ContextCreate";
@@ -31,18 +31,18 @@ export default function Home() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    axios.get("http://127.0.0.1:8000/api/products/").then((res) => {
+    api.get("products/").then((res) => {
       setProducts(res.data);
-      axios
-        .get("http://127.0.0.1:8000/api/products/?category__name=Featured")
+      api
+        .get("products/")
         .then((res) => {
           setP(res.data);
         });
     });
 
     if (user) {
-      axios
-        .get(`http://127.0.0.1:8000/api/wishlist/?userId=${user.id}`, {
+      api
+        .get(`wishlist/?userId=${user.id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -51,7 +51,7 @@ export default function Home() {
     }
   }, [user, setWishlist, setP]);
   const handleShare = (product) => {
-  const productURL = `https://yourdomain.com/product/${product.id}`;
+  const productURL = `https://waqthecom.duckdns.org/api/${product.id}`;
   const message = `Check out this product: ${product.name} - ₹${product.price}. View it here: ${productURL}`;
   const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
   window.open(whatsappURL, "_blank");
@@ -64,9 +64,9 @@ export default function Home() {
       setWishlist((prev) =>
         prev.filter((item) => item.productId !== product.id)
       );
-      await axios
+      await api
         .get(
-          `http://127.0.0.1:8000/api/wishlist/?userId=${user.id}&productId=${product.id}`,
+          `wishlist/?userId=${user.id}&productId=${product.id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -76,7 +76,7 @@ export default function Home() {
         .then((res) => {
           deleteid = res.data[0].id;
         });
-      await axios.delete(`http://127.0.0.1:8000/api/wishlist/${deleteid}/`, {
+      await api.delete(`wishlist/${deleteid}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -84,7 +84,7 @@ export default function Home() {
     } else {
       const newItem = { productId: product.id, userId: user.id };
       setWishlist((prev) => [...prev, newItem]);
-      await axios.post("http://127.0.0.1:8000/api/wishlist/", newItem, {
+      await api.post("wishlist/", newItem, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

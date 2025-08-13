@@ -11,6 +11,7 @@ import {
   Badge,
 } from "react-bootstrap";
 import { ContextCreate } from "../context/ContextCreate";
+import api from "../api";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -35,8 +36,8 @@ validateUser()
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    axios
-      .get(`http://127.0.0.1:8000/api/products/${id}/`)
+    api
+      .get(`products/${id}/`)
       .then((res) => setProduct(res.data))
       .catch(() => setError("Product not found."));
   }, [id]);
@@ -48,7 +49,7 @@ validateUser()
   const handleInactivate = async () => {
     if (!window.confirm("Are you sure you want to inactivate this product?")) return;
     try {
-      await axios.put(`http://127.0.0.1:8000/api/products/${product.id}/`, { ...product, active: false },{headers: {
+      await api.put(`products/${product.id}/`, { ...product, active: false },{headers: {
     Authorization: `Bearer ${token}`,
   },
       });
@@ -63,7 +64,7 @@ validateUser()
   const handleActivate = async () => {
     if (!window.confirm("Are you sure you want to activate this product?")) return;
     try {
-      await axios.put(`http://127.0.0.1:8000/api/products/${product.id}/`, { ...product, active: true },{headers: {
+      await api.put(`products/${product.id}/`, { ...product, active: true },{headers: {
     Authorization: `Bearer ${token}`,
   },
       });
@@ -78,7 +79,7 @@ validateUser()
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this product? It will be moved to the recycle bin.")) return;
     try {
-      await axios.put(`http://127.0.0.1:8000/api/products/${product.id}/`, { ...product, deleted: true, active: false },{headers: {
+      await api.put(`products/${product.id}/`, { ...product, deleted: true, active: false },{headers: {
     Authorization: `Bearer ${token}`,
   },
       });
@@ -93,7 +94,7 @@ validateUser()
   const handleRestoreFromRecycleBin = async () => {
     if (!window.confirm("Are you sure you want to restore this product?")) return;
     try {
-      await axios.put(`http://127.0.0.1:8000/api/products/${product.id}/`, { ...product, deleted: false, active: true },{headers: {
+      await api.put(`products/${product.id}/`, { ...product, deleted: false, active: true },{headers: {
     Authorization: `Bearer ${token}`,
   },
       });
@@ -107,7 +108,7 @@ validateUser()
 
   const handleFinalDelete = async () => {if (!window.confirm("Are you sure you want to permanently remove this product from the recycle bin? This action cannot be undone.")) return;
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/products/${product.id}/`,{headers: {
+      await api.delete(`products/${product.id}/`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       });

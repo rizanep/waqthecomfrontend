@@ -4,6 +4,7 @@ import { Container, Table, Button, Alert, Modal } from "react-bootstrap";
 import { ContextCreate } from "../context/ContextCreate";
 import { useNavigate } from "react-router-dom";
 import { Toast, ToastContainer } from "react-bootstrap";
+import api from "../api";
 
 function UserManagement() {
   const [users, setUsers] = useState([]);
@@ -36,7 +37,7 @@ function UserManagement() {
   };
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(" http://127.0.0.1:8000/api/register/", {
+      const response = await api.get("register/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,24 +51,24 @@ function UserManagement() {
 
   const fetchUserDetails = async (userId) => {
     try {
-      const userResponse = await axios.get(
-        `http://127.0.0.1:8000/api/register/${userId}/`,
+      const userResponse = await api.get(
+        `register/${userId}/`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      const ordersResponse = await axios.get(
-        `http://127.0.0.1:8000/api/order?user=${userId}`,
+      const ordersResponse = await api.get(
+        `order?user=${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      const cartResponse = await axios.get(
-        `http://127.0.0.1:8000/api/cart?userId=${userId}`,
+      const cartResponse = await api.get(
+        `cart?userId=${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -100,8 +101,8 @@ function UserManagement() {
       if (action === "delete") payload = { active: false };
       if (action === "restore") payload = { active: true };
 
-      await axios.patch(
-        `http://127.0.0.1:8000/api/register/${userId}/`,
+      await api.patch(
+        `register/${userId}/`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -122,7 +123,7 @@ function UserManagement() {
   // const handleBlockUser = async (id) => {
   //   if (window.confirm("Are you sure you want to block this user?")) {
   //     try {
-  //       await axios.patch(`http://127.0.0.1:8000/api/register/${id}/`, {
+  //       await api.patch(`register/${id}/`, {
   //         blocked: true,
   //       },{headers: {
   //   Authorization: `Bearer ${token}`,
@@ -142,7 +143,7 @@ function UserManagement() {
   // const handleUnblockUser = async (id) => {
   //   if (window.confirm("Are you sure you want to unblock this user?")) {
   //     try {
-  //       await axios.patch(`http://127.0.0.1:8000/api/register/${id}/`, {
+  //       await api.patch(`register/${id}/`, {
   //         blocked: false,
   //       },{headers: {
   //   Authorization: `Bearer ${token}`,
@@ -162,7 +163,7 @@ function UserManagement() {
   // const handleSoftDeleteUser = async (id) => {
   //   if (window.confirm("Are you sure you want to soft delete this user?")) {
   //     try {
-  //       await axios.patch(`http://127.0.0.1:8000/api/register/${id}/`, {
+  //       await api.patch(`register/${id}/`, {
   //         active: false,
   //       },{headers: {
   //   Authorization: `Bearer ${token}`,
@@ -182,7 +183,7 @@ function UserManagement() {
   // const handleRestoreUser = async (id) => {
   //   if (window.confirm("Are you sure you want to restore this user?")) {
   //     try {
-  //       await axios.patch(`http://127.0.0.1:8000/api/register/${id}/`, {
+  //       await api.patch(`register/${id}/`, {
   //         active: true,
   //       },{headers: {
   //   Authorization: `Bearer ${token}`,

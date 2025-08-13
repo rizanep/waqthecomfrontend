@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Register.css";
+import api from "../api";
 
 function Register() {
   const [name, setName] = useState("");
@@ -70,7 +71,7 @@ function Register() {
     };
 
     try {
-      await axios.post("http://127.0.0.1:8000/api/register/", user);
+      await api.post("register/", user);
       showToastMsg("Registration Successful", "success");
       setTimeout(() => navigate("/login"), 1500);
     } catch (err) {

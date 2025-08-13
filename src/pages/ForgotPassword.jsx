@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Register.css";
+import api from "../api";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -33,7 +34,7 @@ export default function ForgotPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/forgot-password/", { email });
+      const res = await api.post("forgot-password/", { email });
       showToastMsg(res.data.message, "success");
     } catch (err) {
       const msg = err.response?.data?.error || "Something went wrong";

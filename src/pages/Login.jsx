@@ -12,6 +12,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Register.css";
 import { ContextCreate } from "../context/ContextCreate";
+import api from "../api";
 
 function Login() {
   const [userName, setUserName] = useState("");
@@ -41,7 +42,7 @@ const handleSumbit = async (e) => {
   e.preventDefault();
 
   try {
-  const res = await axios.post("http://127.0.0.1:8000/api/login/", {
+  const res = await api.post("login/", {
     username: userName,
     password: password,
   });

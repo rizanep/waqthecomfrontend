@@ -12,6 +12,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { ContextCreate } from "../context/ContextCreate";
 import { useLoading } from "../context/LoadingContext";
+import api from "../api";
 export default function Cart() {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
@@ -30,8 +31,8 @@ export default function Cart() {
   useEffect(() => {
     setLoading(true);
     window.scrollTo(0, 0);
-    axios
-      .get("http://127.0.0.1:8000/api/products/")
+    api
+      .get("products/")
       .then((res) => setProducts(res.data));
   }, []);
 
@@ -39,8 +40,8 @@ export default function Cart() {
     if (!session) return navigate("/login");
 
     try {
-      const res = await axios.get(
-        `http://127.0.0.1:8000/api/cart/?userId=${session.id}`,
+      const res = await api.get(
+        `cart/?userId=${session.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -83,9 +84,9 @@ export default function Cart() {
   }, [currentCart]);
 
   const updateQuantity = (id, quantity) => {
-    axios
+    api
       .patch(
-        `http://127.0.0.1:8000/api/cart/${id}/`,
+        `cart/${id}/`,
         { quantity },
         {
           headers: {
@@ -106,8 +107,8 @@ export default function Cart() {
   };
 
   const removeItem = (id) => {
-    axios
-      .delete(`http://127.0.0.1:8000/api/cart/${id}/`, {
+    api
+      .delete(`cart/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

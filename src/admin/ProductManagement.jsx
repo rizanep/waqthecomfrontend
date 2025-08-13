@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, Modal, Form, Table, Row, Col } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ContextCreate } from "../context/ContextCreate";
+import api from "../api";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
@@ -58,7 +59,7 @@ const ProductManagement = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/products/");
+      const res = await api.get("products/");
       setProducts(res.data);
     } catch (err) {
       alert("Failed to fetch products");
@@ -67,7 +68,7 @@ const ProductManagement = () => {
   };
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/catogories/");
+      const res = await api.get("catogories/");
       setCategories(["All", ...res.data.map((cat) => cat.name)]);
     } catch (err) {
       alert("Failed to fetch categories");
@@ -77,7 +78,7 @@ const ProductManagement = () => {
 
   const fetchRecycleBinItems = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/products/");
+      const res = await api.get("products/");
       setRecycleBinItems(res.data.filter((p) => p.deleted));
     } catch (err) {
       alert("Failed to fetch recycle bin items");
@@ -170,8 +171,8 @@ const ProductManagement = () => {
 
     try {
       if (isEdit) {
-        await axios.put(
-          `http://127.0.0.1:8000/api/products/${formData.id}/`,
+        await api.put(
+          `products/${formData.id}/`,
           formData,{headers: {
     Authorization: `Bearer ${token}`,
   },
@@ -184,7 +185,7 @@ const ProductManagement = () => {
           0
         );
         const newProduct = { ...formData, id: (maxId + 1).toString() };
-        await axios.post("http://127.0.0.1:8000/api/products/", newProduct,{headers: {
+        await api.post("products/", newProduct,{headers: {
     Authorization: `Bearer ${token}`,
   },
       });

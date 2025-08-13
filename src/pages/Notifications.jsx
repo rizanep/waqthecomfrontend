@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, ListGroup, Container } from "react-bootstrap";
+import api from "../api";
 
 export default function Notifications() {
   const [notifications, setNotifications] = useState([]);
@@ -14,7 +15,7 @@ export default function Notifications() {
     }
 
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/notifications/", {
+      const res = await api.get("notifications/", {
         params: { user_id: session.id }, // send as query param ?user_id=...
         headers: {
           Authorization: `Bearer ${token}`,
@@ -31,8 +32,8 @@ export default function Notifications() {
     if (!window.confirm("Are you sure you want to clear all notifications?")) return;
 
     try {
-      await axios.delete(
-        "http://127.0.0.1:8000/api/notifications/clear-all/",
+      await api.delete(
+        "notifications/clear-all/",
         {
           params: { user_id: session.id }, // send user_id to backend for filter
           headers: {

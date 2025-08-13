@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Register.css";
+import api from "../api";
 
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
@@ -37,7 +38,7 @@ export default function ResetPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/reset-password/", { token, password });
+      const res = await api.post("reset-password/", { token, password });
       showToastMsg(res.data.message, "success");
       setTimeout(() => navigate("/login"), 1500);
     } catch (err) {

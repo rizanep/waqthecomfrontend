@@ -7,6 +7,7 @@ import { ContextCreate } from "../context/ContextCreate";
 import "../Home.css";
 import { FaWhatsapp } from "react-icons/fa";
 import { useLoading } from "../context/LoadingContext";
+import api from "../api";
 const ProductListPage = () => {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
@@ -28,7 +29,7 @@ const handleShare = (product) => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/catogories/");
+      const res = await api.get("catogories/");
       setCategories(["All", ...res.data.map((cat) => cat.name)]);
     } catch (err) {
       alert("Failed to fetch categories");
@@ -37,7 +38,7 @@ const handleShare = (product) => {
   };
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:8000/api/products/").then((res) => {
+    api.get("products/").then((res) => {
       setProducts(res.data);
       setFiltered(res.data);
       setLoading(false);
@@ -45,8 +46,8 @@ const handleShare = (product) => {
     });
 
     if (user) {
-      axios
-        .get(`http://127.0.0.1:8000/api/wishlist/?userId=${user.id}`,{headers: {
+      api
+        .get(`wishlist/?userId=${user.id}`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       })
@@ -80,21 +81,21 @@ const handleShare = (product) => {
     let deleteid;
     if (exists) {
       setWishlist((prev) => prev.filter((item) => item.productId !== product.id));
-      await axios.get(`http://127.0.0.1:8000/api/wishlist/?userId=${user.id}&productId=${product.id}`,{headers: {
+      await api.get(`wishlist/?userId=${user.id}&productId=${product.id}`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       })
       .then((res)=>{
         deleteid=res.data[0].id
       })
-      await axios.delete(`http://127.0.0.1:8000/api/wishlist/${deleteid}/`,{headers: {
+      await api.delete(`wishlist/${deleteid}/`,{headers: {
     Authorization: `Bearer ${token}`,
   },
       });
     } else {
       const newItem = { productId: product.id, userId: user.id };
       setWishlist((prev) => [...prev, newItem]);
-      await axios.post("http://127.0.0.1:8000/api/wishlist/", newItem,{headers: {
+      await api.post("wishlist/", newItem,{headers: {
     Authorization: `Bearer ${token}`,
   },
       });

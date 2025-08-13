@@ -6,7 +6,8 @@ const useNotificationSocket = (username, onMessage) => {
   useEffect(() => {
     if (!username) return;
 
-    const socket = new WebSocket(`ws://localhost:8000/ws/notifications/${username}/`);
+    const socket = new WebSocket(`${import.meta.env.VITE_WS_BASE_URL}/ws/notifications/${username}/`);
+
 
     socket.onopen = () => {
       console.log("✅ WebSocket connected");

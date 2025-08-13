@@ -10,6 +10,7 @@ import {
   Alert,
 } from "react-bootstrap";
 import { FaDownload } from "react-icons/fa";
+import api from "../api";
 export default function Profile() {
   const session = JSON.parse(localStorage.getItem("session"));
   const token = localStorage.getItem("accessToken");
@@ -26,8 +27,8 @@ export default function Profile() {
 
   const fetchUserData = async () => {
     try {
-      const res = await axios.get(
-        `http://127.0.0.1:8000/api/register/${session.id}/`,
+      const res = await api.get(
+        `register/${session.id}/`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -40,10 +41,10 @@ export default function Profile() {
 
   const fetchOrders = async () => {
     try {
-      const pr = await axios.get(`http://127.0.0.1:8000/api/products/`);
+      const pr = await api.get(`products/`);
       setProducts(pr.data);
-      const res = await axios.get(
-        `http://127.0.0.1:8000/api/order?user=${session.id}`
+      const res = await api.get(
+        `order?user=${session.id}`
       );
       setOrders(res.data);
     } catch (error) {
@@ -53,8 +54,8 @@ export default function Profile() {
 
   const handleUpdate = async () => {
     try {
-      await axios.patch(
-        `http://127.0.0.1:8000/api/register/${session.id}/`,
+      await api.patch(
+        `register/${session.id}/`,
         userData,
         {
           headers: { Authorization: `Bearer ${token}` },
