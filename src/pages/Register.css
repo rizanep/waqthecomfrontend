@@ -1,0 +1,92 @@
+
+
+
+.register-page {
+  display: flex;
+  height: 700px;
+  width: 100;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.register-form-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #1b1c2d;
+  color: white;
+    height: 700px;
+
+}
+
+.register-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #414568;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+  color: wheat;
+  
+}
+
+.register-card h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+color: wheat;}
+
+.register-card a {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: #b0b3ff;
+  text-decoration: underline;
+  
+}
+
+.register-card a:hover {
+  color: #ffffff;
+}
+
+.register-carousel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #23243a;
+    height: 700px;
+ visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.register-carousel img {
+  border-radius: 0;
+    height: 700px;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.carousel-caption p {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

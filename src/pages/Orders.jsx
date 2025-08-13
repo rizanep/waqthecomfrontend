@@ -1,29 +1,58 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Card, Row, Col, Alert } from "react-bootstrap";
-
+import { useLoading } from "../context/LoadingContext";
 export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState("");
   const session = JSON.parse(localStorage.getItem("session"));
+  const { setLoading } = useLoading();
 
+useEffect(() => {
+  const token = localStorage.getItem("accessToken");
+  if (!session) return;
 
-  useEffect(() => {
-    
-    if (!session) return;
-    axios
-      .get(`http://localhost:3000/orders?userId=${session.id}`)
-      .then((res) => {
-        setOrders(res.data);
-        
-      });
-    axios.get("http://localhost:3000/products").then((res) => {
-      setProducts(res.data);
+  setLoading(true);
+
+  const productsRequest = axios.get("http://127.0.0.1:8000/api/products/");
+
+  const ordersRequest = axios.get(
+    `http://127.0.0.1:8000/api/order/?user=${session.id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  Promise.all([productsRequest, ordersRequest])
+    .then(([productsRes, ordersRes]) => {
+      setProducts(productsRes.data);
+      setOrders(ordersRes.data);
+    })
+    .catch((err) => {
+      const errMsg =
+        err.response?.data?.detail ||
+        err.response?.data ||
+        "Failed to fetch data.";
+      setError(errMsg);
+    })
+    .finally(() => {
+      setLoading(false);
     });
-  }, [session]);
+}, []);
+
+
+  if (error) {
+    return (
+      <Container className="mt-5">
+        <Alert variant="danger">{error}</Alert>
+      </Container>
+    );
+  }
 
   if (!orders.length) {
-    
     return (
       <Container className="mt-5">
         <Alert variant="info">You have no orders yet.</Alert>
@@ -36,7 +65,7 @@ export default function Orders() {
       <h2 className="mb-4">Your Orders</h2>
       <Row>
         {orders.map((order) => {
-          const product = products.find((p) => p.id === order.productId);
+          const product = products.find((p) => p.id === order.product);
           if (!product) return null;
           return (
             <Col md={6} lg={4} key={order.id} className="mb-4">
@@ -54,26 +83,37 @@ export default function Orders() {
                     <strong>Total Price:</strong> ₹
                     {(product.price * order.quantity).toFixed(2)}
                     <br />
+                    <strong>Status:</strong>{" "}
+                    <span
+                      className={`badge ${
+                        order.status === "pending"
+                          ? "bg-warning text-dark"
+                          : order.status === "shipped"
+                          ? "bg-primary"
+                          : order.status === "delivered"
+                          ? "bg-success"
+                          : "bg-secondary"
+                      }`}
+                    >
+                      {order.status}
+                    </span>
+                    <br />
                     <strong>Ordered on:</strong>{" "}
                     {new Date(order.date).toLocaleDateString()}
                   </Card.Text>
 
-                  {order.deliveryDetails && (
-                    <>
-                      <hr />
-                      <h6 className="mb-2">Delivery Details:</h6>
-                      <Card.Text className="small text-muted">
-                        <strong>Name:</strong> {order.deliveryDetails.name}
-                        <br />
-                        <strong>Phone:</strong> {order.deliveryDetails.phone}
-                        <br />
-                        <strong>Address:</strong>&nbsp;
-                        {order.deliveryDetails.addressLine},&nbsp;
-                        {order.deliveryDetails.city} -&nbsp;
-                        {order.deliveryDetails.zip}
-                      </Card.Text>
-                    </>
-                  )}
+                  <>
+                    <hr />
+                    <h6 className="mb-2">Delivery Details:</h6>
+                    <Card.Text className="small text-muted">
+                      <strong>Name:</strong> {order.name}
+                      <br />
+                      <strong>Phone:</strong> {order.phone}
+                      <br />
+                      <strong>Address:</strong> {order.address_line},{" "}
+                      {order.city} - {order.zip_code}
+                    </Card.Text>
+                  </>
                 </Card.Body>
               </Card>
             </Col>

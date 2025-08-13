@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import axios from "axios";
 import {
   Card,
@@ -9,52 +9,92 @@ import {
   Form,
   Carousel,
 } from "react-bootstrap";
+import { FaWhatsapp } from "react-icons/fa";
+
 import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { ContextCreate } from "../context/ContextCreate";
 import "../Home.css";
-
+import "./Newdesign.css";
+import useNotificationSocket from "../hooks/useNotificationSocket";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Home() {
   const [products, setProducts] = useState([]);
-
+  const [p, setP] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [sort, setSort] = useState("default");
   const navigate = useNavigate();
-
-  const { user, wishlist, setWishlist } = useContext(ContextCreate);
+  const token = localStorage.getItem("accessToken");
+  const { user, wishlist, setWishlist, config } = useContext(ContextCreate);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    axios
-      .get("http://localhost:3000/products?category=Featured")
-      .then((res) => {
-        setProducts(res.data);
-      });
+    axios.get("http://127.0.0.1:8000/api/products/").then((res) => {
+      setProducts(res.data);
+      axios
+        .get("http://127.0.0.1:8000/api/products/?category__name=Featured")
+        .then((res) => {
+          setP(res.data);
+        });
+    });
 
     if (user) {
       axios
-        .get(`http://localhost:3000/wishlist?userId=${user.id}`)
+        .get(`http://127.0.0.1:8000/api/wishlist/?userId=${user.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then((res) => setWishlist(res.data));
     }
-  }, [user, setWishlist]);
-
+  }, [user, setWishlist, setP]);
+  const handleShare = (product) => {
+  const productURL = `https://yourdomain.com/product/${product.id}`;
+  const message = `Check out this product: ${product.name} - ₹${product.price}. View it here: ${productURL}`;
+  const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+  window.open(whatsappURL, "_blank");
+};
+   
   const toggleWishlisticon = async (product) => {
-    const exists = wishlist.find((item) => item.id === product.id);
-
+    const exists = wishlist.find((item) => item.productId === product.id);
+    let deleteid;
     if (exists) {
-      setWishlist((prev) => prev.filter((item) => item.id !== product.id));
-      await axios.delete(`http://localhost:3000/wishlist/${product.id}`);
+      setWishlist((prev) =>
+        prev.filter((item) => item.productId !== product.id)
+      );
+      await axios
+        .get(
+          `http://127.0.0.1:8000/api/wishlist/?userId=${user.id}&productId=${product.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((res) => {
+          deleteid = res.data[0].id;
+        });
+      await axios.delete(`http://127.0.0.1:8000/api/wishlist/${deleteid}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
     } else {
-      const newItem = { ...product, userId: user.id };
+      const newItem = { productId: product.id, userId: user.id };
       setWishlist((prev) => [...prev, newItem]);
-      await axios.post("http://localhost:3000/wishlist", newItem);
+      await axios.post("http://127.0.0.1:8000/api/wishlist/", newItem, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
     }
   };
 
   return (
-    <Container fluid className="p-0 ">
-      <Carousel fade>
+    <Container className="p-0 m-0">
+      <Carousel fade className="carso">
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
@@ -105,7 +145,7 @@ export default function Home() {
           />
         </Carousel.Item>
       </Carousel>
-
+      {/* <ToastContainer /> */}
       <div className="running-text-container">
         <div className="running-text">
           <span>BOOK YOUR WATCH FOR SERVICE</span>
@@ -337,11 +377,65 @@ export default function Home() {
       </div>
 
       <hr className="my-5" />
+      <div className="feature-container">
+        <div className="feature-text left">
+          <div className="point">
+            <span className="point-number">01.</span>
+            <h4>Full HD AMOLED</h4>
+            <p>
+              Enjoy crisp visuals with a vibrant AMOLED 1.75" display perfect
+              for outdoor and indoor use.
+            </p>
+          </div>
+          <div className="point">
+            <span className="point-number">02.</span>
+            <h4>Ultra Battery Backup</h4>
+            <p>
+              Runs up to 7 days on a single charge with smart battery
+              optimization.
+            </p>
+          </div>
+        </div>
+
+        <div className="image-area">
+          <div className="circle-border"></div>
+          <div className="product-img-wrapper">
+            <img
+              src="src/assets/watch.png"
+              alt="Smartwatch"
+              className="product-img"
+            />
+          </div>
+        </div>
+
+        <div className="feature-text right">
+          <div className="point">
+            <span className="point-number">03.</span>
+            <h4>Health Monitoring</h4>
+            <p>
+              Includes heart rate, SpO2, and sleep tracking with 24x7
+              monitoring.
+            </p>
+          </div>
+          <div className="point">
+            <span className="point-number">04.</span>
+            <h4>Smart Notifications</h4>
+            <p>
+              Stay connected with alerts for calls, texts, and apps directly on
+              your wrist.
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr className="my-5" />
       <h3 className="text-center mb-5 fw-bold ">EXPLORE THE COLLECTION</h3>
 
       <Row>
-        {products.map((product) => {
-          const isWishlisted = wishlist.some((item) => item.id === product.id);
+        {p.map((product) => {
+          const isWishlisted = wishlist.some(
+            (item) => item.productId === product.id
+          );
+
           return (
             <Col md={3} sm={6} xs={12} key={product.id} className="mb-4">
               <div className="product-card border rounded shadow-sm p-2 position-relative h-100">
@@ -372,6 +466,13 @@ export default function Home() {
                 >
                   View Details
                 </Button>
+                <div
+                  className="share-icon position-absolute top-0 start-0 p-2"
+                  onClick={() => handleShare(product)}
+                  style={{ cursor: "pointer", zIndex: 2 }}
+                >
+                  <FaWhatsapp size={25} color="black" />
+                </div>
               </div>
             </Col>
           );

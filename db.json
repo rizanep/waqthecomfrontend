@@ -1,35 +1,91 @@
 {
   "users": [
-      {
-        "id": "f8a1",
-        "name": "rizan",
-        "phn": "9946186283",
-        "userName": "riz123",
-        "password": "789456"
-      },
-      {
-        "id": "cbc7",
-        "name": "rizan",
-        "phn": "4578127845",
-        "userName": "riz1234",
-        "password": "789456123"
-      },
-      {
-        "id": "9faa",
-        "name": "modhalaj",
-        "phn": "9037086721",
-        "userName": "midhu123",
-        "password": "789456"
-      },
-      {
-        "id": "8eef",
-        "name": "rizan",
-        "phn": "7894561238",
-        "userName": "rizan123",
-        "password": "789456"
-      }
+    {
+      "id": "f8a1",
+      "name": "rizan",
+      "phn": "9946186283",
+      "userName": "riz123",
+      "password": "789456",
+      "role": "admin",
+      "blocked": false,
+      "active": true
+    },
+    {
+      "id": "db3a",
+      "name": "riZan",
+      "phn": "7894561230",
+      "userName": "riz12345",
+      "password": "789456",
+      "blocked": false,
+      "active": true,
+      "role": "user"
+    },
+    {
+      "id": "2fb1",
+      "name": "midlaj",
+      "phn": "7894561230",
+      "userName": "mid123",
+      "password": "789456",
+      "blocked": false,
+      "active": true,
+      "role": "user"
+    },
+    {
+      "id": "9a49",
+      "name": "s",
+      "phn": "8281740483",
+      "userName": "s58",
+      "password": "789456",
+      "blocked": false,
+      "active": true,
+      "role": "user"
+    }
   ],
-  "wishlist": [],
+  "wishlist": [
+    {
+      "id": "4",
+      "name": "Fire-Boltt Almighty Black",
+      "description": "Fire-Boltt Almighty smartwatch comes with a 35mm (1.39″ inch) AMOLED Display, Always on Display Function, 454*454 Pixels Resolution, Bluetooth Calling, Voice Assistant, SpO2 Monitoring",
+      "price": "4999",
+      "category": "Smart",
+      "image": "https://zimsonwatches.com/cdn/shop/products/mxw_1440_f_auto.png?v=1686743164&width=990",
+      "active": true,
+      "deleted": null,
+      "userId": "db3a"
+    },
+    {
+      "id": "3",
+      "name": "Rado Captain Cook Skeleton Dial Men 43mma",
+      "description": "The Captain Cook High-Tech Ceramic Skeleton showcases its innovative R808 movement, a marvel of contrasts, know-how and clever geometry, that allows a distinct view of the various parts. It’s equipped with an anti-magnetic and highly reliable NivachronTM hairspring that has been fully tested in five positions and provides up to 80 hours of power reserve. The superb matt-finish monobloc case is framed by a circular-brushed plasma high-tech ceramic bezel insert which matches the tones of the case and the outer bracelet links. Inside the rotatable bezel, a warm and bright rose-gold-coloured index ring adds contrast, next to the box-shaped sapphire crystal with anti-reflective coating on both faces. The dial itself is intentionally spartan, with hands treated with white Super-LumiNova® to enhance readability in low-light conditions.",
+      "price": "46840",
+      "category": "Luxury",
+      "image": "https://zimsonwatches.com/cdn/shop/files/R32148162.png?v=1697789166&width=990",
+      "active": true,
+      "deleted": null,
+      "userId": "db3a"
+    },
+    {
+      "id": "5",
+      "name": "Fire-Boltt 360 Grey",
+      "description": "Fire-Boltt 360 SpO2 Full Touch Large Display Round Smart Watch with in-Built Games, 8 Days Battery Life, IP67 Water Resistant with Blood Oxygen and Heart Rate Monitoring (Grey)",
+      "price": "2499",
+      "category": "Smart",
+      "image": "https://zimsonwatches.com/cdn/shop/files/bsw003360grey.webp?v=1686743983",
+      "active": true,
+      "userId": "db3a"
+    },
+    {
+      "id": 7,
+      "name": "Tissot T-Pocket Silver Dial Unisex 51mm",
+      "description": "The Tissot Lepine Mechanical Pocket watches combine history and tradition with modern expertise. This collection offers a classic round pocket watch look with various dial designs depending on your own preference, always maintaining the vintage touch through its fine hands that provide a hint of nostalgia to the piece.",
+      "price": "74700.00",
+      "image": "https://zimsonwatches.com/cdn/shop/files/T8614059903300.jpg?v=1686558188&width=990",
+      "active": true,
+      "deleted": false,
+      "category": 4,
+      "userId": "f8a1"
+    }
+  ],
   "cart": [
     {
       "id": "1ab9",
@@ -48,64 +104,94 @@
       "userId": "8eef",
       "productId": "17",
       "quantity": 1
+    },
+    {
+      "id": "d985",
+      "userId": "u2",
+      "productId": "16",
+      "quantity": 1
+    },
+    {
+      "id": "34e1",
+      "userId": "u2",
+      "productId": "23",
+      "quantity": 1
+    },
+    {
+      "id": "e97d",
+      "userId": "f8a1",
+      "productId": null,
+      "quantity": 1
+    },
+    {
+      "id": "d76d",
+      "userId": "f8a1",
+      "productId": "2",
+      "quantity": 1
+    }
+  ],
+  "logout": [
+    {
+      "id": "be3f"
     }
   ],
   "products": [
     {
-      "id": "1",
-      "name": "Classic Analog Watch",
-      "description": "The Movado Bold Fusion Chronograph is a 44mm timepiece that combines sophistication with functionality. Its rose gold-toned stainless steel case complements a black chronograph dial featuring rose gold accents and the Movado signature dot at 12 o'clock. Sunray dial chronograph subdials for elapsed time tracking, and a date window add to its functionality, making it a great choice for active individuals",
-      "price": 6640,
-      "category": "Classic",
-      "image": "https://static.helioswatchstore.com/media/catalog/product/3/6/3600898_1.jpg"
-    },
-    {
       "id": "2",
-      "name": "Digital Sports Watch",
-      "description": "Water-resistant digital watch with multiple sports modes.",
-      "price": 4980,
+      "name": "Breitling Endurance Pro IRONMAN Red Dial Men 44mmm",
+      "description": "Breitling’s IRONMAN® edition lightweight Endurance Pro watch. Designed for men and women whose active lives blend a professional mindset with a sporty lifestyle, the Endurance Pro is equal to the challenges of a rigorous workout but fashionable enough for everyday wear. The Endurance Pro features an ultra-light Breitlight® case, a robust material 3.3 times lighter than titanium and 5.8 times lighter than stainless steel. Non-magnetic, thermally stable and hypoallergenic, Breitlight® is highly resistant to scratches, traction and corrosion. It also has a touch that is warmer than metal and a slightly textured effect accentuating the originality of the design. Exclusive to Breitling, it is 100% Swiss-made. Offered with a distinctive IRONMAN® red dial and branded rubber strap – fitting a Breitlight® double tang-type buckle, the Endurance Pro IRONMAN® is powered by the Breitling Caliber 82, a COSC-certified SuperQuartz™ chronograph delivering exceptional precision.",
+      "price": "33020",
       "category": "Sports",
-      "image": "https://5.imimg.com/data5/JJ/IL/GH/SELLER-17755668/skmei-1155-casual-men-male-sport-watches-chronograph-double-time-alarm-watch-waterproof-digital-wris.jpeg"
+      "image": "https://zimsonwatches.com/cdn/shop/files/x823109a1k1s1-endurance-pro-ironman-soldier.png?v=1729776121&width=990",
+      "active": true,
+      "deleted": null
     },
     {
       "id": "3",
-      "name": "Luxury Chronograph",
-      "description": "Premium chronograph watch with sapphire crystal.",
-      "price": 24900,
+      "name": "Rado Captain Cook Skeleton Dial Men 43mma",
+      "description": "The Captain Cook High-Tech Ceramic Skeleton showcases its innovative R808 movement, a marvel of contrasts, know-how and clever geometry, that allows a distinct view of the various parts. It’s equipped with an anti-magnetic and highly reliable NivachronTM hairspring that has been fully tested in five positions and provides up to 80 hours of power reserve. The superb matt-finish monobloc case is framed by a circular-brushed plasma high-tech ceramic bezel insert which matches the tones of the case and the outer bracelet links. Inside the rotatable bezel, a warm and bright rose-gold-coloured index ring adds contrast, next to the box-shaped sapphire crystal with anti-reflective coating on both faces. The dial itself is intentionally spartan, with hands treated with white Super-LumiNova® to enhance readability in low-light conditions.",
+      "price": "46840",
       "category": "Luxury",
-      "image": "https://luxurytime.in/wp-content/uploads/2024/07/A13313121L1A1.jpg"
+      "image": "https://zimsonwatches.com/cdn/shop/files/R32148162.png?v=1697789166&width=990",
+      "active": true,
+      "deleted": null
     },
     {
       "id": "4",
-      "name": "Smart Watch Pro",
-      "description": "Advanced smartwatch with heart rate monitoring and GPS.",
-      "price": 16600,
+      "name": "Fire-Boltt Almighty Black",
+      "description": "Fire-Boltt Almighty smartwatch comes with a 35mm (1.39″ inch) AMOLED Display, Always on Display Function, 454*454 Pixels Resolution, Bluetooth Calling, Voice Assistant, SpO2 Monitoring",
+      "price": "4999",
       "category": "Smart",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT8PckXs4YACKouFk7YZxtQ4lHXt7lzUcUTg&s"
+      "image": "https://zimsonwatches.com/cdn/shop/products/mxw_1440_f_auto.png?v=1686743164&width=990",
+      "active": true,
+      "deleted": null
     },
     {
       "id": "5",
-      "name": "Minimalist Watch",
-      "description": "Sleek and simple design for everyday wear.",
-      "price": 4150,
-      "category": "Casual",
-      "image": "https://watchessy.com/wp-content/uploads/2020/06/custom-watches.jpg"
+      "name": "Fire-Boltt 360 Grey",
+      "description": "Fire-Boltt 360 SpO2 Full Touch Large Display Round Smart Watch with in-Built Games, 8 Days Battery Life, IP67 Water Resistant with Blood Oxygen and Heart Rate Monitoring (Grey)",
+      "price": "2499",
+      "category": "Smart",
+      "image": "https://zimsonwatches.com/cdn/shop/files/bsw003360grey.webp?v=1686743983",
+      "active": true
     },
     {
       "id": "6",
-      "name": "Diver's Watch",
-      "description": "Professional diving watch with 200m water resistance.",
-      "price": 20750,
+      "name": "Bfit Pro Brown",
+      "description": "Full Touch, 1.3 \" TFT wide display, Heart Rate Monitor, Blood Pressure Monitor, Sleeping Monitor, Female Physiological Reminder, ECG Monitor, Blood Oxygen Monitor, Music Control, Calling Function, Message Notification, Call Notification, Email Notifiction, Camera Control, Water resistant - IP67 - 5 Meter, 7 Type Sports Mode, Stop Watch, Alarm Clock, Usage Time Up To 2 Days/Stand By Time 5 Days",
+      "price": "8950",
       "category": "Sports",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLsRhIBAN_m6bz1BqzJpaeF41b1lxUMNed5g&s"
+      "image": "https://zimsonwatches.com/cdn/shop/files/bfit-pro-sblt-n.jpg?v=1686912461&width=990",
+      "active": true
     },
     {
       "id": "7",
-      "name": "Vintage Pocket Watch",
-      "description": "Classic pocket watch with antique finish.",
-      "price": 7470,
+      "name": "Tissot T-Pocket Silver Dial Unisex 51mm",
+      "description": "The Tissot Lepine Mechanical Pocket watches combine history and tradition with modern expertise. This collection offers a classic round pocket watch look with various dial designs depending on your own preference, always maintaining the vintage touch through its fine hands that provide a hint of nostalgia to the piece.",
+      "price": "74700",
       "category": "Vintage",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy1RBnleHp8Cuh_mHHutSghObvbRlUgBxipA&s"
+      "image": "https://zimsonwatches.com/cdn/shop/files/T8614059903300.jpg?v=1686558188&width=990",
+      "active": true
     },
     {
       "id": "8",
@@ -113,7 +199,8 @@
       "description": "Track your steps, calories, and sleep patterns.",
       "price": 3320,
       "category": "Fitness",
-      "image": "https://image.made-in-china.com/2f0j00ymPcoUOqGSkb/2024-Men-Sports-Smart-Watch-F300-IP67-Waterproof-Bt-Call-2-1inch-Big-Screen-Heart-Rate-Women-s-Health-Fitness-Tracker-Smartwatch.webp"
+      "image": "https://image.made-in-china.com/2f0j00ymPcoUOqGSkb/2024-Men-Sports-Smart-Watch-F300-IP67-Waterproof-Bt-Call-2-1inch-Big-Screen-Heart-Rate-Women-s-Health-Fitness-Tracker-Smartwatch.webp",
+      "active": true
     },
     {
       "id": "9",
@@ -121,7 +208,8 @@
       "description": "Aviation-inspired watch with chronograph function.",
       "price": 14950,
       "category": "Professional",
-      "image": "https://images.squarespace-cdn.com/content/v1/5c78138211f784469d4817df/04afbf30-8752-4b82-951c-bc5687a8b25e/387D0760-EE1C-4DF9-9761-555063A70F93.jpeg"
+      "image": "https://images.squarespace-cdn.com/content/v1/5c78138211f784469d4817df/04afbf30-8752-4b82-951c-bc5687a8b25e/387D0760-EE1C-4DF9-9761-555063A70F93.jpeg",
+      "active": true
     },
     {
       "id": "10",
@@ -129,7 +217,8 @@
       "description": "Colorful and durable watch for children.",
       "price": 2080,
       "category": "Kids",
-      "image": "https://skmei.in/cdn/shop/files/1451color1_0a50da8a-8b3c-4557-a574-383874644877.jpg?v=1746858831"
+      "image": "https://skmei.in/cdn/shop/files/1451color1_0a50da8a-8b3c-4557-a574-383874644877.jpg?v=1746858831",
+      "active": true
     },
     {
       "id": "11",
@@ -137,7 +226,8 @@
       "description": "Rugged watch designed for outdoor adventures.",
       "price": 10800,
       "category": "Outdoor",
-      "image": "https://i.pinimg.com/564x/f9/b7/65/f9b76564fe6afb7617d04b4c2ab55f49.jpg"
+      "image": "https://i.pinimg.com/564x/f9/b7/65/f9b76564fe6afb7617d04b4c2ab55f49.jpg",
+      "active": true
     },
     {
       "id": "12",
@@ -145,7 +235,8 @@
       "description": "Elegant rose gold watch for formal occasions.",
       "price": 13300,
       "category": "Formal",
-      "image": "https://guesswatches.com/cdn/shop/products/GW0114L3.png?v=1684277916&width=990"
+      "image": "https://guesswatches.com/cdn/shop/products/GW0114L3.png?v=1684277916&width=990",
+      "active": true
     },
     {
       "id": "13",
@@ -153,7 +244,9 @@
       "description": "Eco-friendly watch that charges with sunlight.",
       "price": 7470,
       "category": "Eco",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHKxQBE3IKxCcHdt1NnAa-eRi7pDaCbXj30w&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHKxQBE3IKxCcHdt1NnAa-eRi7pDaCbXj30w&s",
+      "active": true,
+      "deleted": null
     },
     {
       "id": "14",
@@ -161,7 +254,8 @@
       "description": "Exclusive limited edition timepiece.",
       "price": 41500,
       "category": "Luxury",
-      "image": "https://www.bangalorewatchco.in/cdn/shop/files/apogee_karman_meta_v2_1000x.jpg?v=1728396212"
+      "image": "https://www.bangalorewatchco.in/cdn/shop/files/apogee_karman_meta_v2_1000x.jpg?v=1728396212",
+      "active": true
     },
     {
       "id": "15",
@@ -169,7 +263,8 @@
       "description": "Sustainable watch made from natural wood.",
       "price": 5810,
       "category": "Eco",
-      "image": "https://images.stockcake.com/public/f/8/5/f857c7bf-8b18-457b-9870-8cfbab80f624_large/elegant-wooden-watch-stockcake.jpg"
+      "image": "https://images.stockcake.com/public/f/8/5/f857c7bf-8b18-457b-9870-8cfbab80f624_large/elegant-wooden-watch-stockcake.jpg",
+      "active": true
     },
     {
       "id": "16",
@@ -177,7 +272,8 @@
       "description": "Professional watch for the modern executive.",
       "price": 16600,
       "category": "Featured",
-      "image": "https://img.joomcdn.net/4f6e1551e5624816193e8a2992b081541704ebb1_original.jpeg"
+      "image": "https://img.joomcdn.net/4f6e1551e5624816193e8a2992b081541704ebb1_original.jpeg",
+      "active": true
     },
     {
       "id": "17",
@@ -185,7 +281,9 @@
       "description": "Trendy watch suitable for all genders.",
       "price": 4560,
       "category": "Featured",
-      "image": "https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/29520988/2024/5/15/77892c23-cac7-4bed-a1b5-3304752dc7581715756231173MINICooperUnisexDialStrapsAnalogueWatchWTMIN161705QN1.jpg"
+      "image": "https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/29520988/2024/5/15/77892c23-cac7-4bed-a1b5-3304752dc7581715756231173MINICooperUnisexDialStrapsAnalogueWatchWTMIN161705QN1.jpg",
+      "active": true,
+      "deleted": null
     },
     {
       "id": "18",
@@ -193,7 +291,8 @@
       "description": "Sophisticated watch displaying moon phases.",
       "price": 23250,
       "category": "Featured",
-      "image": "https://5.imimg.com/data5/HD/RN/MY-35870101/grey-dial-dual-time-with-moon-phase-watch-1710nl01.png"
+      "image": "https://5.imimg.com/data5/HD/RN/MY-35870101/grey-dial-dual-time-with-moon-phase-watch-1710nl01.png",
+      "active": true
     },
     {
       "id": "19",
@@ -201,7 +300,8 @@
       "description": "Mechanical watch with visible movement.",
       "price": 29050,
       "category": "Featured",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGsFcR-NJVcY5crIaGgUf8OwkuLAIIUlrEg&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGsFcR-NJVcY5crIaGgUf8OwkuLAIIUlrEg&s",
+      "active": true
     },
     {
       "id": "20",
@@ -209,7 +309,8 @@
       "description": "Affordable and reliable digital timepiece.",
       "price": 1660,
       "category": "Featured",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s",
+      "active": true
     },
     {
       "id": "21",
@@ -217,7 +318,8 @@
       "description": "Affordable and reliable digital timepiece.",
       "price": 1660,
       "category": "Featured",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s",
+      "active": true
     },
     {
       "id": "22",
@@ -225,7 +327,8 @@
       "description": "Colorful and durable watch for children.",
       "price": 2080,
       "category": "Featured",
-      "image": "https://skmei.in/cdn/shop/files/1451color1_0a50da8a-8b3c-4557-a574-383874644877.jpg?v=1746858831"
+      "image": "https://skmei.in/cdn/shop/files/1451color1_0a50da8a-8b3c-4557-a574-383874644877.jpg?v=1746858831",
+      "active": true
     },
     {
       "id": "23",
@@ -233,7 +336,8 @@
       "description": "Rugged watch designed for outdoor adventures.",
       "price": 10800,
       "category": "Featured",
-      "image": "https://i.pinimg.com/564x/f9/b7/65/f9b76564fe6afb7617d04b4c2ab55f49.jpg"
+      "image": "https://i.pinimg.com/564x/f9/b7/65/f9b76564fe6afb7617d04b4c2ab55f49.jpg",
+      "active": true
     },
     {
       "id": "24",
@@ -241,7 +345,8 @@
       "description": "Elegant rose gold watch for formal occasions.",
       "price": 13300,
       "category": "Formal",
-      "image": "https://guesswatches.com/cdn/shop/products/GW0114L3.png?v=1684277916&width=990"
+      "image": "https://guesswatches.com/cdn/shop/products/GW0114L3.png?v=1684277916&width=990",
+      "active": true
     },
     {
       "id": "25",
@@ -249,7 +354,8 @@
       "description": "Eco-friendly watch that charges with sunlight.",
       "price": 7470,
       "category": "Eco",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHKxQBE3IKxCcHdt1NnAa-eRi7pDaCbXj30w&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHKxQBE3IKxCcHdt1NnAa-eRi7pDaCbXj30w&s",
+      "active": true
     },
     {
       "id": "26",
@@ -257,7 +363,8 @@
       "description": "Exclusive limited edition timepiece.",
       "price": 41500,
       "category": "Luxury",
-      "image": "https://www.bangalorewatchco.in/cdn/shop/files/apogee_karman_meta_v2_1000x.jpg?v=1728396212"
+      "image": "https://www.bangalorewatchco.in/cdn/shop/files/apogee_karman_meta_v2_1000x.jpg?v=1728396212",
+      "active": true
     },
     {
       "id": "27",
@@ -265,7 +372,8 @@
       "description": "Sustainable watch made from natural wood.",
       "price": 5810,
       "category": "Eco",
-      "image": "https://images.stockcake.com/public/f/8/5/f857c7bf-8b18-457b-9870-8cfbab80f624_large/elegant-wooden-watch-stockcake.jpg"
+      "image": "https://images.stockcake.com/public/f/8/5/f857c7bf-8b18-457b-9870-8cfbab80f624_large/elegant-wooden-watch-stockcake.jpg",
+      "active": true
     },
     {
       "id": "28",
@@ -273,15 +381,8 @@
       "description": "Professional watch for the modern executive.",
       "price": 16600,
       "category": "Professional",
-      "image": "https://img.joomcdn.net/4f6e1551e5624816193e8a2992b081541704ebb1_original.jpeg"
-    },
-    {
-      "id": "29",
-      "name": "Unisex Fashion Watch",
-      "description": "Trendy watch suitable for all genders.",
-      "price": 4560,
-      "category": "Fashion",
-      "image": "https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/29520988/2024/5/15/77892c23-cac7-4bed-a1b5-3304752dc7581715756231173MINICooperUnisexDialStrapsAnalogueWatchWTMIN161705QN1.jpg"
+      "image": "https://img.joomcdn.net/4f6e1551e5624816193e8a2992b081541704ebb1_original.jpeg",
+      "active": true
     },
     {
       "id": "30",
@@ -289,7 +390,8 @@
       "description": "Sophisticated watch displaying moon phases.",
       "price": 23250,
       "category": "Luxury",
-      "image": "https://5.imimg.com/data5/HD/RN/MY-35870101/grey-dial-dual-time-with-moon-phase-watch-1710nl01.png"
+      "image": "https://5.imimg.com/data5/HD/RN/MY-35870101/grey-dial-dual-time-with-moon-phase-watch-1710nl01.png",
+      "active": true
     },
     {
       "id": "31",
@@ -297,7 +399,8 @@
       "description": "Mechanical watch with visible movement.",
       "price": 29050,
       "category": "Mechanical",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGsFcR-NJVcY5crIaGgUf8OwkuLAIIUlrEg&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGsFcR-NJVcY5crIaGgUf8OwkuLAIIUlrEg&s",
+      "active": true
     },
     {
       "id": "32",
@@ -305,7 +408,8 @@
       "description": "Affordable and reliable digital timepiece.",
       "price": 1660,
       "category": "Basic",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s",
+      "active": true
     },
     {
       "id": "33",
@@ -313,7 +417,8 @@
       "description": "Affordable and reliable digital timepiece.",
       "price": 1660,
       "category": "Basic",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s",
+      "active": true
     },
     {
       "id": "34",
@@ -321,7 +426,8 @@
       "description": "Colorful and durable watch for children.",
       "price": 2080,
       "category": "Kids",
-      "image": "https://skmei.in/cdn/shop/files/1451color1_0a50da8a-8b3c-4557-a574-383874644877.jpg?v=1746858831"
+      "image": "https://skmei.in/cdn/shop/files/1451color1_0a50da8a-8b3c-4557-a574-383874644877.jpg?v=1746858831",
+      "active": true
     },
     {
       "id": "35",
@@ -329,7 +435,8 @@
       "description": "Rugged watch designed for outdoor adventures.",
       "price": 10800,
       "category": "Outdoor",
-      "image": "https://i.pinimg.com/564x/f9/b7/65/f9b76564fe6afb7617d04b4c2ab55f49.jpg"
+      "image": "https://i.pinimg.com/564x/f9/b7/65/f9b76564fe6afb7617d04b4c2ab55f49.jpg",
+      "active": true
     },
     {
       "id": "36",
@@ -337,7 +444,8 @@
       "description": "Elegant rose gold watch for formal occasions.",
       "price": 13300,
       "category": "Formal",
-      "image": "https://guesswatches.com/cdn/shop/products/GW0114L3.png?v=1684277916&width=990"
+      "image": "https://guesswatches.com/cdn/shop/products/GW0114L3.png?v=1684277916&width=990",
+      "active": true
     },
     {
       "id": "37",
@@ -345,7 +453,8 @@
       "description": "Eco-friendly watch that charges with sunlight.",
       "price": 7470,
       "category": "Eco",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHKxQBE3IKxCcHdt1NnAa-eRi7pDaCbXj30w&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHKxQBE3IKxCcHdt1NnAa-eRi7pDaCbXj30w&s",
+      "active": true
     },
     {
       "id": "38",
@@ -353,7 +462,8 @@
       "description": "Exclusive limited edition timepiece.",
       "price": 41500,
       "category": "Luxury",
-      "image": "https://www.bangalorewatchco.in/cdn/shop/files/apogee_karman_meta_v2_1000x.jpg?v=1728396212"
+      "image": "https://www.bangalorewatchco.in/cdn/shop/files/apogee_karman_meta_v2_1000x.jpg?v=1728396212",
+      "active": true
     },
     {
       "id": "39",
@@ -361,7 +471,8 @@
       "description": "Sustainable watch made from natural wood.",
       "price": 5810,
       "category": "Eco",
-      "image": "https://images.stockcake.com/public/f/8/5/f857c7bf-8b18-457b-9870-8cfbab80f624_large/elegant-wooden-watch-stockcake.jpg"
+      "image": "https://images.stockcake.com/public/f/8/5/f857c7bf-8b18-457b-9870-8cfbab80f624_large/elegant-wooden-watch-stockcake.jpg",
+      "active": true
     },
     {
       "id": "40",
@@ -369,7 +480,8 @@
       "description": "Professional watch for the modern executive.",
       "price": 16600,
       "category": "Professional",
-      "image": "https://img.joomcdn.net/4f6e1551e5624816193e8a2992b081541704ebb1_original.jpeg"
+      "image": "https://img.joomcdn.net/4f6e1551e5624816193e8a2992b081541704ebb1_original.jpeg",
+      "active": true
     },
     {
       "id": "41",
@@ -377,7 +489,9 @@
       "description": "Trendy watch suitable for all genders.",
       "price": 4560,
       "category": "Fashion",
-      "image": "https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/29520988/2024/5/15/77892c23-cac7-4bed-a1b5-3304752dc7581715756231173MINICooperUnisexDialStrapsAnalogueWatchWTMIN161705QN1.jpg"
+      "image": "https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/29520988/2024/5/15/77892c23-cac7-4bed-a1b5-3304752dc7581715756231173MINICooperUnisexDialStrapsAnalogueWatchWTMIN161705QN1.jpg",
+      "active": true,
+      "deleted": null
     },
     {
       "id": "42",
@@ -385,7 +499,8 @@
       "description": "Sophisticated watch displaying moon phases.",
       "price": 23250,
       "category": "Luxury",
-      "image": "https://5.imimg.com/data5/HD/RN/MY-35870101/grey-dial-dual-time-with-moon-phase-watch-1710nl01.png"
+      "image": "https://5.imimg.com/data5/HD/RN/MY-35870101/grey-dial-dual-time-with-moon-phase-watch-1710nl01.png",
+      "active": true
     },
     {
       "id": "43",
@@ -393,7 +508,8 @@
       "description": "Mechanical watch with visible movement.",
       "price": 29050,
       "category": "Mechanical",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGsFcR-NJVcY5crIaGgUf8OwkuLAIIUlrEg&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGsFcR-NJVcY5crIaGgUf8OwkuLAIIUlrEg&s",
+      "active": true
     },
     {
       "id": "44",
@@ -401,170 +517,130 @@
       "description": "Affordable and reliable digital timepiece.",
       "price": 1660,
       "category": "Basic",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s",
+      "active": true
     },
     {
       "id": "45",
-      "name": "Budget Digital Watch",
-      "description": "Affordable and reliable digital timepiece.",
-      "price": 1660,
-      "category": "Basic",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyrFPQY2Mv0HWrw53zM5TptrC2cPJDGgnSQ&s"
+      "name": "ALPINE EAGLE 41 SL CADENCE 8HF",
+      "description": "First introduced in 2019, the Alpine Eagle collection has been evolving with the latest technological advances since its inception. With its third edition of a high-frequency timepiece, it has reached new heights by launching its lightest ever watch, not only within the collection, but at Chopard in general. To accomplish this feat, the 41-millimeter case, as well as the crown, dial and movement of this Alpine Eagle 41 SL Cadence 8HF model – limited to 250 pieces – are made of ceramicized titanium. Featuring a sporty bead-blasted finish, its Pitch Black dial plays on contrasts with subtle touches of orange. The Alpine Eagle 41 SL Cadence 8HF is all about precision, style and sportsmanship.\n",
+      "price": "23500",
+      "category": "NEW ARRIVAL",
+      "image": "https://objects-pprod.cdn.chopard.com/e_trim/w_iw,h_ih,c_lpad,g_center/c_pad,ar_1:1,w_1490/ProductsAssets/Web/298600-3028_01.png",
+      "active": true
     }
   ],
   "orders": [
     {
-      "id": "2f22",
-      "userId": "f8a1",
-      "productId": "16",
-      "quantity": 1,
-      "date": "2025-05-17T04:30:49.028Z",
+      "id": "a565",
+      "userId": "db3a",
+      "productId": "18",
+      "quantity": "3",
+      "date": "2025-05-20T04:18:45.330Z",
       "deliveryDetails": {
-        "name": "rizan",
-        "phone": "789788987",
-        "addressLine": "ksjh,sflhflkj",
-        "city": "aofd",
-        "zip": "654585"
+        "name": "habeeb",
+        "phone": "7894561231",
+        "addressLine": "eramakkka veettil puthiyakat house chettippadi",
+        "city": "chettippadi",
+        "zip": "676319"
       }
     },
     {
-      "id": "3fbf",
-      "userId": "f8a1",
-      "productId": "21",
-      "quantity": 1,
-      "date": "2025-05-17T04:30:49.063Z",
+      "id": "a56u",
+      "userId": "db3a",
+      "productId": "18",
+      "quantity": "8",
+      "date": "2025-05-19T04:18:45.330Z",
       "deliveryDetails": {
-        "name": "rizan",
-        "phone": "789788987",
-        "addressLine": "ksjh,sflhflkj",
-        "city": "aofd",
-        "zip": "654585"
+        "name": "habeeb",
+        "phone": "7894561231",
+        "addressLine": "eramakkka veettil puthiyakat house chettippadi",
+        "city": "chettippadi",
+        "zip": "676319"
       }
     },
     {
-      "id": "41f0",
-      "userId": "f8a1",
+      "id": "a56j",
+      "userId": "db3a",
+      "productId": "18",
+      "quantity": "3",
+      "date": "2025-05-17T04:18:45.330Z",
+      "deliveryDetails": {
+        "name": "habeeb",
+        "phone": "7894561231",
+        "addressLine": "eramakkka veettil puthiyakat house chettippadi",
+        "city": "chettippadi",
+        "zip": "676319"
+      }
+    },
+    {
+      "id": "2340",
+      "userId": "db3a",
       "productId": "22",
       "quantity": 1,
-      "date": "2025-05-17T04:35:47.438Z",
+      "date": "2025-05-23T03:53:56.162Z",
       "deliveryDetails": {
-        "name": "sdgf",
-        "phone": "dsfs",
-        "addressLine": "sdfsdf",
-        "city": "sdfdsf",
-        "zip": "sdfds"
+        "name": "rizan",
+        "phone": "4578",
+        "addressLine": "546sdfkjohfdslkj",
+        "city": "364> ",
+        "zip": "lkj"
       }
     },
     {
-      "id": "be73",
-      "userId": "f8a1",
-      "productId": "23",
-      "quantity": 2,
-      "date": "2025-05-17T04:36:12.581Z",
-      "deliveryDetails": {
-        "name": "dsf",
-        "phone": "sf",
-        "addressLine": "sfd",
-        "city": "fs",
-        "zip": "sdf"
-      }
-    },
-    {
-      "id": "7e60",
-      "userId": "cbc7",
-      "productId": "21",
+      "id": "f417",
+      "userId": "db3a",
+      "productId": "18",
       "quantity": 1,
-      "date": "2025-05-17T04:37:48.641Z",
+      "date": "2025-05-23T03:53:56.198Z",
       "deliveryDetails": {
-        "name": "fsd",
-        "phone": "fsd",
-        "addressLine": "sf",
-        "city": "sf",
-        "zip": "sfd"
+        "name": "rizan",
+        "phone": "4578",
+        "addressLine": "546sdfkjohfdslkj",
+        "city": "364> ",
+        "zip": "lkj"
       }
     },
     {
-      "id": "6bda",
-      "userId": "cbc7",
-      "productId": "17",
-      "quantity": 1,
-      "date": "2025-05-17T04:56:56.611Z",
+      "id": "e665",
+      "userId": "db3a",
+      "productId": "18",
+      "quantity": "10",
+      "date": "2025-05-24T05:51:25.952Z",
       "deliveryDetails": {
-        "name": "w",
-        "phone": "w",
+        "name": "sdf;f",
+        "phone": ";jj;",
+        "addressLine": "jk",
+        "city": "lkj",
+        "zip": "lkj"
+      }
+    },
+    {
+      "id": "aaa7",
+      "userId": "db3a",
+      "productId": "2",
+      "quantity": 1,
+      "date": "2025-05-24T05:51:25.991Z",
+      "deliveryDetails": {
+        "name": "sdf;f",
+        "phone": ";jj;",
+        "addressLine": "jk",
+        "city": "lkj",
+        "zip": "lkj"
+      }
+    },
+    {
+      "id": "9bcc",
+      "userId": "db3a",
+      "productId": "4",
+      "quantity": "3",
+      "date": "2025-06-03T04:03:47.694Z",
+      "deliveryDetails": {
+        "name": "Breitling Endurance Pro IRONMAN Red Dial Men 44m",
+        "phone": "8281740483",
         "addressLine": "QURTUBA INSTITUTE OF ACADEMIC EXELENCE\nKASHIBARI, BADIJAN, KOCHADHAMAN",
-        "city": "w",
-        "zip": "w"
-      }
-    },
-    {
-      "id": "b244",
-      "userId": "cbc7",
-      "productId": "9",
-      "quantity": 1,
-      "date": "2025-05-17T05:14:26.469Z",
-      "deliveryDetails": {
-        "name": "dsf",
-        "phone": "fds",
-        "addressLine": "dsg",
-        "city": "s",
-        "zip": "sf"
-      }
-    },
-    {
-      "id": "011e",
-      "userId": "f8a1",
-      "productId": "23",
-      "quantity": 5,
-      "date": "2025-05-17T06:07:55.575Z",
-      "deliveryDetails": {
-        "name": "s",
-        "phone": "w",
-        "addressLine": "58",
-        "city": "586",
-        "zip": "68"
-      }
-    },
-    {
-      "id": "6184",
-      "userId": "9faa",
-      "productId": "16",
-      "quantity": "1",
-      "date": "2025-05-17T07:46:46.975Z",
-      "deliveryDetails": {
-        "name": "s6gyt5r7hyg",
-        "phone": "54554",
-        "addressLine": "alikkal ",
-        "city": "palakkad",
-        "zip": "65785"
-      }
-    },
-    {
-      "id": "6db9",
-      "userId": "9faa",
-      "productId": "21",
-      "quantity": 1,
-      "date": "2025-05-17T07:46:47.008Z",
-      "deliveryDetails": {
-        "name": "s6gyt5r7hyg",
-        "phone": "54554",
-        "addressLine": "alikkal ",
-        "city": "palakkad",
-        "zip": "65785"
-      }
-    },
-    {
-      "id": "d06b",
-      "userId": "8eef",
-      "productId": "16",
-      "quantity": 1,
-      "date": "2025-05-17T10:47:19.469Z",
-      "deliveryDetails": {
-        "name": "akj",
-        "phone": "87",
-        "addressLine": "skdjsj",
-        "city": "jsf",
-        "zip": "878"
+        "city": "KISHANGANJ",
+        "zip": "855107"
       }
     }
   ]
