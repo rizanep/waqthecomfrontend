@@ -431,7 +431,7 @@ export default function Home() {
       <h3 className="text-center mb-5 fw-bold ">EXPLORE THE COLLECTION</h3>
 
       <Row>
-        {p.map((product) => {
+        {p.slice(0,4).map((product) => {
           const isWishlisted = wishlist.some(
             (item) => item.productId === product.id
           );
