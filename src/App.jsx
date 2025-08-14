@@ -9,6 +9,7 @@ import {
   Badge,
   Offcanvas,
 } from "react-bootstrap";
+import {  useRef } from "react";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { ContextCreate, ContextProvider } from "./context/ContextCreate";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -44,9 +45,25 @@ import Loader from "./pages/Loader";
 import { FaBell } from "react-icons/fa";
 import { nav } from "framer-motion/client";
 import api from "./api";
-
+import { Toaster } from "react-hot-toast";
 
 function Header() {
+  const [expanded, setExpanded] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+const dropdownRef = useRef();
+
+const handleClickOutside = (event) => {
+  if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    setDropdownOpen(false);
+  }
+};
+
+useEffect(() => {
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
   const {
     cartCount,
     logout,
@@ -126,39 +143,43 @@ const handleRemove = async (item) => {
   return (
     <>
     <ToastContainer />
+    <Toaster position="top-right" reverseOrder={false} />
       <Navbar
         bg="dark"
         variant="dark"
         expand="lg"
         sticky="top"
         className="shadow py-1 px-5 mb-0"
+        expanded={expanded}
       >
         <Navbar.Brand as={Link} to={user?.role === 'admin' ? '/admin' : '/'} className="d-flex align-items-center">
           <span className="fw-bold fs-4 mx-4">WAQTH</span>
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" 
+        onClick={() => setExpanded(expanded ? false : true)}
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto d-flex align-items-center">
             {user && user.role === 'user' && (
-              <Nav.Link as={Link} to="/orders">
+              <Nav.Link as={Link} to="/orders" onClick={() => setExpanded(false)}>
                 Orders
               </Nav.Link>
             )}
 
             {/*   */}
             {user?.role === "admin" && (
-              <Nav.Link as={Link} to="/admin/products">
+              <Nav.Link as={Link} to="/admin/products" onClick={() => setExpanded(false)}>
                 Manage Products
               </Nav.Link>
             )}
             {user?.role === "admin" && (
-              <Nav.Link as={Link} to="/admin/users">
+              <Nav.Link as={Link} to="/admin/users" onClick={() => setExpanded(false)}>
                 Manage Users
               </Nav.Link>
             )}
             {user?.role === "admin" && (
-              <Nav.Link as={Link} to="/admin/orders">
+              <Nav.Link as={Link} to="/admin/orders" onClick={() => setExpanded(false)}>
                 View Orders
               </Nav.Link>
             )}
@@ -166,6 +187,7 @@ const handleRemove = async (item) => {
             {user?.role === "user"  && (
               <Nav.Link
                 onClick={toggleWishlist}
+                
                 className="d-flex align-items-center me-0"
                 style={{ cursor: "pointer" }}
               >
@@ -184,6 +206,7 @@ const handleRemove = async (item) => {
                 as={Link}
                 to="/cart"
                 className="d-flex align-items-center"
+                onClick={() => setExpanded(false)}
               >
                 <FaShoppingCart className="me-1" />
                 <span>Cart</span>
@@ -199,30 +222,38 @@ const handleRemove = async (item) => {
             {user ? (
               <>
                 <NavDropdown
-                  title={user.name}
-                  id="user-dropdown"
-                  align="end"
-                >
-                  <NavDropdown.Item
-                    onClick={() => {
-                      logout();
-                      navigate("/login");
-                    }}
-                  >
-                    Logout
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                  onClick={()=>{
-                    navigate("/profile")
-                  }}
-                  >
-                    Profile
-                  </NavDropdown.Item>
-                </NavDropdown>
+  title={user.name}
+  id="user-dropdown"
+  align="end"
+  show={dropdownOpen}            // control visibility
+  onClick={() => setDropdownOpen(!dropdownOpen)} // toggle
+  ref={dropdownRef}             // ref for outside click detection
+>
+  <NavDropdown.Item
+    onClick={() => {
+      logout();
+      navigate("/login");
+      setDropdownOpen(false); // close after logout
+      setExpanded(false)
+    }}
+  >
+    Logout
+  </NavDropdown.Item>
+  <NavDropdown.Item
+    onClick={() => {
+      navigate("/profile");
+      setDropdownOpen(false);
+      setExpanded(false) // close after navigating
+    }}
+  >
+    Profile
+  </NavDropdown.Item>
+</NavDropdown>
+
               </>
             ) : (
               <>
-                <Nav.Link as={Link} to="/login">
+                <Nav.Link as={Link} to="/login" onClick={() => setExpanded(false)}>
                   Login
                 </Nav.Link>
                 {/* <Nav.Link as={Link} to="/register">
@@ -237,6 +268,7 @@ const handleRemove = async (item) => {
                 as={Link}
                 to="/notifications"
                 className="d-flex align-items-center"
+                onClick={() => setExpanded(false)}
               >
                 <FaBell className="me-1" />
                 {nl > 0 && (
@@ -303,7 +335,8 @@ const handleRemove = async (item) => {
 export default function App() {
    const { loading } = useLoading();
   return (
-    <div className="bg-wrapper ">
+    <div className="d-flex flex-column min-vh-100">
+    <div className="bg-wrapper">
       
       <BrowserRouter>
         <ContextProvider>
@@ -337,6 +370,7 @@ export default function App() {
           <Footer />
         </ContextProvider>
       </BrowserRouter>
+    </div>
     </div>
   );
 }

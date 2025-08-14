@@ -4,7 +4,7 @@ import { Button, Modal, Form, Table, Row, Col } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ContextCreate } from "../context/ContextCreate";
 import api from "../api";
-
+import toast from "react-hot-toast";
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -20,6 +20,7 @@ const ProductManagement = () => {
     image: "",
     active: true,
   });
+  
   const [imageInputType, setImageInputType] = useState("url");
   const [showRecycleBin, setShowRecycleBin] = useState(false);
   const [recycleBinItems, setRecycleBinItems] = useState([]);
@@ -62,7 +63,7 @@ const ProductManagement = () => {
       const res = await api.get("products/");
       setProducts(res.data);
     } catch (err) {
-      alert("Failed to fetch products");
+      toast.error("Product added successfully");
       console.error(err);
     }
   };
@@ -71,7 +72,7 @@ const ProductManagement = () => {
       const res = await api.get("catogories/");
       setCategories(["All", ...res.data.map((cat) => cat.name)]);
     } catch (err) {
-      alert("Failed to fetch categories");
+      toast.error("Failed to fetch categories");
       console.error(err);
     }
   };
@@ -81,7 +82,7 @@ const ProductManagement = () => {
       const res = await api.get("products/");
       setRecycleBinItems(res.data.filter((p) => p.deleted));
     } catch (err) {
-      alert("Failed to fetch recycle bin items");
+      toast.error("Failed to fetch recycle bin items");
       console.error(err);
     }
   };
@@ -157,7 +158,7 @@ const ProductManagement = () => {
       !formData.category.trim() ||
       !formData.image.trim()
     ) {
-      alert("Please fill all fields");
+      toast.error("Please fill all fields");
       return;
     }
 
@@ -178,7 +179,7 @@ const ProductManagement = () => {
   },
       }
         );
-        alert("Product updated successfully");
+        toast.success("Product updated successfully");
       } else {
         const maxId = products.reduce(
           (max, p) => (parseInt(p.id) > max ? parseInt(p.id) : max),
@@ -189,13 +190,13 @@ const ProductManagement = () => {
     Authorization: `Bearer ${token}`,
   },
       });
-        alert("Product added successfully");
+        toast.success("Product added successfully");
       }
 
       fetchProducts();
       setShowModal(false);
     } catch (err) {
-      alert("Failed to save product");
+      toast.error("Failed to save product");
       console.error(err);
     }
   };

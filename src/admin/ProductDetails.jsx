@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import { ContextCreate } from "../context/ContextCreate";
 import api from "../api";
+import toast from "react-hot-toast";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -53,10 +54,10 @@ validateUser()
     Authorization: `Bearer ${token}`,
   },
       });
-      alert("Product inactivated successfully");
+      toast.success("Product inactivated successfully");
       setProduct({ ...product, active: false });
     } catch (err) {
-      alert("Failed to inactivate product");
+      toast.error("Failed to inactivate product");
       console.error(err);
     }
   };
@@ -68,10 +69,10 @@ validateUser()
     Authorization: `Bearer ${token}`,
   },
       });
-      alert("Product activated successfully");
+      toast.success("Product activated successfully");
       setProduct({ ...product, active: true, deleted: null });
     } catch (err) {
-      alert("Failed to activate product");
+      toast.error("Failed to activate product");
       console.error(err);
     }
   };
@@ -83,10 +84,10 @@ validateUser()
     Authorization: `Bearer ${token}`,
   },
       });
-      alert("Product moved to recycle bin");
+      toast.success("Product moved to recycle bin");
       navigate('/admin/products');
     } catch (err) {
-      alert("Failed to move product to recycle bin");
+      toast.error("Failed to move product to recycle bin");
       console.error(err);
     }
   };
@@ -98,10 +99,10 @@ validateUser()
     Authorization: `Bearer ${token}`,
   },
       });
-      alert("Product restored successfully");
+      toast.success("Product restored successfully");
       navigate('/admin/products');
     } catch (err) {
-      alert("Failed to restore product");
+      toast.error("Failed to restore product");
       console.error(err);
     }
   };
@@ -112,10 +113,10 @@ validateUser()
     Authorization: `Bearer ${token}`,
   },
       });
-      alert("Product permanently deleted");
+      toast.success("Product permanently deleted");
       navigate('/admin/products');
     } catch (err) {
-      alert("Failed to permanently delete product");
+      toast.error("Failed to permanently delete product");
       console.error(err);
     }
   };

@@ -8,6 +8,7 @@ import "../Home.css";
 import { FaWhatsapp } from "react-icons/fa";
 import { useLoading } from "../context/LoadingContext";
 import api from "../api";
+import toast from "react-hot-toast";
 const ProductListPage = () => {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
@@ -32,7 +33,7 @@ const handleShare = (product) => {
       const res = await api.get("catogories/");
       setCategories(["All", ...res.data.map((cat) => cat.name)]);
     } catch (err) {
-      alert("Failed to fetch categories");
+      toast.error("Failed to fetch categories");
       console.error(err);
     }
   };
