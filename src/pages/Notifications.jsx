@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Button, ListGroup, Container } from "react-bootstrap";
+import { Button, ListGroup, Container, Modal } from "react-bootstrap";
 import api from "../api";
 
 export default function Notifications() {
   const [notifications, setNotifications] = useState([]);
+  const [showModal, setShowModal] = useState(false); // modal state
   const token = localStorage.getItem("accessToken");
   const session = JSON.parse(localStorage.getItem("session")); // Parse stored JSON
 
@@ -16,32 +16,27 @@ export default function Notifications() {
 
     try {
       const res = await api.get("notifications/", {
-        params: { user_id: session.id }, // send as query param ?user_id=...
+        params: { user_id: session.id },
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setNotifications(res.data);
-      console.log("Fetched notifications:", res.data);
     } catch (error) {
       console.error("Error fetching notifications:", error);
     }
   };
 
-  const clearAllNotifications = async () => {
-    if (!window.confirm("Are you sure you want to clear all notifications?")) return;
-
+  const handleClearAll = async () => {
     try {
-      await api.delete(
-        "notifications/clear-all/",
-        {
-          params: { user_id: session.id }, // send user_id to backend for filter
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await api.delete("notifications/clear-all/", {
+        params: { user_id: session.id },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setNotifications([]); // Clear UI after delete
+      setShowModal(false); // Close modal
     } catch (error) {
       console.error("Error clearing notifications:", error);
     }
@@ -58,12 +53,13 @@ export default function Notifications() {
         <Button
           variant="danger"
           size="sm"
-          onClick={clearAllNotifications}
+          onClick={() => setShowModal(true)} // open modal
           className="mb-3"
         >
           Clear All
         </Button>
       )}
+
       <ListGroup>
         {notifications.length === 0 ? (
           <ListGroup.Item>No notifications</ListGroup.Item>
@@ -78,6 +74,25 @@ export default function Notifications() {
           ))
         )}
       </ListGroup>
+
+      {/* Confirmation Modal */}
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Clear All Notifications</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to clear all notifications? This action cannot
+          be undone.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleClearAll}>
+            Yes, Clear All
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 }
