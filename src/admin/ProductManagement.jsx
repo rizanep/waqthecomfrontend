@@ -61,7 +61,7 @@ const ProductManagement = () => {
   const fetchProducts = async () => {
     try {
       const res = await api.get("products/");
-      setProducts(res.data);
+      setProducts(res.data.filter((p)=>p.deleted==false));
     } catch (err) {
       toast.error("Product added successfully");
       console.error(err);
@@ -70,7 +70,7 @@ const ProductManagement = () => {
   const fetchCategories = async () => {
     try {
       const res = await api.get("catogories/");
-      setCategories(["All", ...res.data.map((cat) => cat.name)]);
+      setCategories([...res.data.map((cat) => cat.name)]);
     } catch (err) {
       toast.error("Failed to fetch categories");
       console.error(err);
@@ -179,6 +179,7 @@ const ProductManagement = () => {
   },
       }
         );
+        console.log(formData)
         toast.success("Product updated successfully");
       } else {
         const maxId = products.reduce(
@@ -386,11 +387,12 @@ const ProductManagement = () => {
               <Form.Label>Category</Form.Label>
               <Form.Select
                 name="category"
-                value={formData.category}
+                value={formData.category||"ct"}
                 onChange={handleFormChange}
                 required
+                
               >
-                <option value="">Select a category</option>
+                <option>Select a category</option>
                 
                 {categories.map((cat, index) => (
                   <option key={index} value={cat}>

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import {
@@ -9,6 +9,7 @@ import {
   Button,
   Alert,
   Badge,
+  Modal,
 } from "react-bootstrap";
 import { ContextCreate } from "../context/ContextCreate";
 import api from "../api";
@@ -16,25 +17,22 @@ import toast from "react-hot-toast";
 
 export default function ProductDetails() {
   const { id } = useParams();
-
   const [product, setProduct] = useState(null);
   const [error, setError] = useState("");
+  const [modalShow, setModalShow] = useState(false);
+  const [modalAction, setModalAction] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const token=localStorage.getItem("accessToken")
- const {user}=useContext(ContextCreate)
-  useEffect(()=>{
-validateUser()
-  }
+  const token = localStorage.getItem("accessToken");
+  const { user } = useContext(ContextCreate);
+  const isRecycleBin = location.state?.isRecycleBin || false;
 
-  )
- const validateUser=()=>{
-  if(!user){
-    navigate('/login')
-  }
- }
-   const isRecycleBin = location.state?.isRecycleBin || false;
+  // User validation
+  useEffect(() => {
+    if (!user) navigate("/login");
+  }, [user, navigate]);
 
+  // Fetch product
   useEffect(() => {
     window.scrollTo(0, 0);
     api
@@ -43,80 +41,71 @@ validateUser()
       .catch(() => setError("Product not found."));
   }, [id]);
 
-  const handleEdit = () => {
-    navigate('/admin/products', { state: { editProduct: product } });
+  // Modal handlers
+  const handleActionClick = (actionType) => {
+    setModalAction(actionType);
+    setModalShow(true);
   };
 
-  const handleInactivate = async () => {
-    if (!window.confirm("Are you sure you want to inactivate this product?")) return;
-    try {
-      await api.put(`products/${product.id}/`, { ...product, active: false },{headers: {
-    Authorization: `Bearer ${token}`,
-  },
-      });
-      toast.success("Product inactivated successfully");
-      setProduct({ ...product, active: false });
-    } catch (err) {
-      toast.error("Failed to inactivate product");
-      console.error(err);
-    }
-  };
+  const handleConfirm = async () => {
+    setModalShow(false);
+    if (!product) return;
 
-  const handleActivate = async () => {
-    if (!window.confirm("Are you sure you want to activate this product?")) return;
     try {
-      await api.put(`products/${product.id}/`, { ...product, active: true },{headers: {
-    Authorization: `Bearer ${token}`,
-  },
-      });
-      toast.success("Product activated successfully");
-      setProduct({ ...product, active: true, deleted: null });
-    } catch (err) {
-      toast.error("Failed to activate product");
-      console.error(err);
-    }
-  };
+      switch (modalAction) {
+        case "inactivate":
+          await api.put(
+            `products/${product.id}/`,
+            { ...product, active: false },
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+          toast.success("Product inactivated successfully");
+          setProduct({ ...product, active: false });
+          break;
 
-  const handleDelete = async () => {
-    if (!window.confirm("Are you sure you want to delete this product? It will be moved to the recycle bin.")) return;
-    try {
-      await api.put(`products/${product.id}/`, { ...product, deleted: true, active: false },{headers: {
-    Authorization: `Bearer ${token}`,
-  },
-      });
-      toast.success("Product moved to recycle bin");
-      navigate('/admin/products');
-    } catch (err) {
-      toast.error("Failed to move product to recycle bin");
-      console.error(err);
-    }
-  };
+        case "activate":
+          await api.put(
+            `products/${product.id}/`,
+            { ...product, active: true },
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+          toast.success("Product activated successfully");
+          setProduct({ ...product, active: true, deleted: null });
+          break;
 
-  const handleRestoreFromRecycleBin = async () => {
-    if (!window.confirm("Are you sure you want to restore this product?")) return;
-    try {
-      await api.put(`products/${product.id}/`, { ...product, deleted: false, active: true },{headers: {
-    Authorization: `Bearer ${token}`,
-  },
-      });
-      toast.success("Product restored successfully");
-      navigate('/admin/products');
-    } catch (err) {
-      toast.error("Failed to restore product");
-      console.error(err);
-    }
-  };
+        case "delete":
+          await api.put(
+            `products/${product.id}/`,
+            { ...product, deleted: true, active: false },
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+          toast.success("Product moved to recycle bin");
+          navigate("/admin/products");
+          break;
 
-  const handleFinalDelete = async () => {if (!window.confirm("Are you sure you want to permanently remove this product from the recycle bin? This action cannot be undone.")) return;
-    try {
-      await api.delete(`products/${product.id}/`,{headers: {
-    Authorization: `Bearer ${token}`,
-  },
-      });
-      toast.success("Product permanently deleted");
-      navigate('/admin/products');
+        case "restore":
+          await api.put(
+            `products/${product.id}/`,
+            { ...product, deleted: false, active: true },
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+          toast.success("Product restored successfully");
+          navigate("/admin/products");
+          break;
+
+        case "finalDelete":
+          await api.delete(`products/${product.id}/`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          toast.success("Product permanently deleted");
+          navigate("/admin/products");
+          break;
+
+        default:
+          break;
+      }
     } catch (err) {
-      toast.error("Failed to permanently delete product");
+      toast.error("Action failed");
       console.error(err);
     }
   };
@@ -145,27 +134,50 @@ validateUser()
         </Col>
         <Col md={6}>
           <h2>{product.name}</h2>
-          <p className="text-muted">Category: <Badge bg="info">{product.category}</Badge></p>
+          <p className="text-muted">
+            Category: <Badge bg="info">{product.category}</Badge>
+          </p>
           <p>{product.description}</p>
-          <h6 className="text-danger">Stock left:{product.stock}</h6>
-          <h4 className="text-success">₹&nbsp;{product.price}</h4>
+          <h6 className="text-danger">Stock left: {product.stock}</h6>
+          <h4 className="text-success">₹ {product.price}</h4>
 
           {!isRecycleBin && (
             <div className="mt-3">
-              <Button variant="warning" size="sm" onClick={handleEdit} className="me-2">
+              <Button
+                variant="warning"
+                size="sm"
+                onClick={() =>
+                  navigate("/admin/products", { state: { editProduct: product } })
+                }
+                className="me-2"
+              >
                 Edit
               </Button>
               {product.active !== false && !product.deleted ? (
-                <Button variant="danger" size="sm" onClick={handleInactivate} className="me-2">
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleActionClick("inactivate")}
+                  className="me-2"
+                >
                   Inactivate
                 </Button>
               ) : (
-                <Button variant="success" size="sm" onClick={handleActivate} className="me-2">
+                <Button
+                  variant="success"
+                  size="sm"
+                  onClick={() => handleActionClick("activate")}
+                  className="me-2"
+                >
                   Activate
                 </Button>
               )}
               {!product.deleted && (
-                <Button variant="danger" size="sm" onClick={handleDelete}>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleActionClick("delete")}
+                >
                   Delete
                 </Button>
               )}
@@ -174,10 +186,19 @@ validateUser()
 
           {isRecycleBin && (
             <div className="mt-3">
-              <Button variant="success" size="sm" onClick={handleRestoreFromRecycleBin} className="me-2">
+              <Button
+                variant="success"
+                size="sm"
+                onClick={() => handleActionClick("restore")}
+                className="me-2"
+              >
                 Restore
               </Button>
-              <Button variant="danger" size="sm" onClick={handleFinalDelete}>
+              <Button
+                variant="danger"
+                size="sm"
+                onClick={() => handleActionClick("finalDelete")}
+              >
                 Permanently Delete
               </Button>
             </div>
@@ -189,6 +210,33 @@ validateUser()
           <Link to="/admin/products">Back to Product List</Link>
         </Col>
       </Row>
+
+      {/* Confirmation Modal */}
+      <Modal show={modalShow} onHide={() => setModalShow(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Action</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {modalAction === "inactivate" &&
+            "Are you sure you want to inactivate this product?"}
+          {modalAction === "activate" &&
+            "Are you sure you want to activate this product?"}
+          {modalAction === "delete" &&
+            "Are you sure you want to move this product to the recycle bin?"}
+          {modalAction === "restore" &&
+            "Are you sure you want to restore this product?"}
+          {modalAction === "finalDelete" &&
+            "Are you sure you want to permanently delete this product? This action cannot be undone."}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setModalShow(false)}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleConfirm}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 }

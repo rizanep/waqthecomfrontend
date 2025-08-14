@@ -42,7 +42,7 @@ function UserManagement() {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUsers(response.data.data);
+      setUsers(response.data.data.filter((p)=>p.role=="user"));
     } catch (error) {
       console.error("Error fetching users:", error);
       setError("Failed to fetch users.");
