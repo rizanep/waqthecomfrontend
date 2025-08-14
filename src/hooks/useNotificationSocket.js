@@ -7,6 +7,7 @@ const useNotificationSocket = (username, onMessage) => {
     if (!username) return;
 
     const socket = new WebSocket(`wss://waqthecom.duckdns.org/ws/notifications/${username}/`);
+    console.log("object",username)
 
     socket.onopen = () => {
       console.log("✅ WebSocket connected");

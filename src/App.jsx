@@ -109,7 +109,6 @@ const fetchNotifications = async () => {
         },
       });
       setNL(res.data.length);
-      console.log("Fetched notifications:", res.data);
     } catch (error) {
       console.error("Error fetching notifications:", error);
     }
