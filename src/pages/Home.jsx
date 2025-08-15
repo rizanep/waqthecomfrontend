@@ -401,7 +401,7 @@ export default function Home() {
           <div className="circle-border"></div>
           <div className="product-img-wrapper">
             <img
-              src="src/assets/watch.png"
+              src="https://waqth-front.s3.ap-south-1.amazonaws.com/watch-DAtLC2hf.png"
               alt="Smartwatch"
               className="product-img"
             />
