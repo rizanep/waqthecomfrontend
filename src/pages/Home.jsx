@@ -489,7 +489,7 @@ export default function Home() {
             fontWeight: "700",
           }}
         >
-          View More Products
+          View More
         </Button>
       </div>
     </Container>
