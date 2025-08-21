@@ -7,16 +7,16 @@ const useNotificationSocket = (username, onMessage) => {
     if (!username) return;
 
     const socket = new WebSocket(`wss://waqthecom.duckdns.org/ws/notifications/${username}/`);
-    console.log("object",username)
+    
 
     socket.onopen = () => {
-      console.log("✅ WebSocket connected");
+      
     };
 
 socket.onmessage = (event) => {
   try {
     const data = JSON.parse(event.data); // Convert string → object
-    console.log("📩 New message:", data.message);
+   
     if (onMessage) onMessage(data.message);
   } catch (error) {
     console.error("Invalid message format:", event.data);
