@@ -28,7 +28,7 @@ socket.onmessage = (event) => {
     };
 
     socket.onclose = (event) => {
-      console.warn("🔌 WebSocket closed:", event);
+      
     };
 
     socketRef.current = socket;
